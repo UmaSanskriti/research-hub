@@ -1,0 +1,2568 @@
+{
+  "contributors": [
+    {
+      "id": 54646596,
+      "username": "ahsaan-habib",
+      "url": "https://github.com/ahsaan-habib",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54646596?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "4894100ca36911a3a29f4378a1330079bb1b7c6b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4894100ca36911a3a29f4378a1330079bb1b7c6b",
+              "message": "Added installation guide via Python virtual environment (#11)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 43259657,
+      "username": "aidando73",
+      "url": "https://github.com/aidando73",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43259657?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "c00a851450cfbf9cb9f37ecfbda145da3041aca0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c00a851450cfbf9cb9f37ecfbda145da3041aca0",
+              "message": "doc: Fix agent store broken link and types (#147)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 298381,
+      "username": "anastasds",
+      "url": "https://github.com/anastasds",
+      "avatar_url": "https://avatars.githubusercontent.com/u/298381?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "9041c84ab683c052fa1562154d0b3d6d83781f98",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9041c84ab683c052fa1562154d0b3d6d83781f98",
+              "message": "Update README directions to match llama-stack repository README directions for server port (#169)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 42600855,
+      "username": "architSrivastav",
+      "url": "https://github.com/architSrivastav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42600855?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "139354e395fe24a946b6f9d52d06babd40e48a0b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/139354e395fe24a946b6f9d52d06babd40e48a0b",
+              "message": "Fixed a command in readme for ollama instructions (#41)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19390,
+      "username": "ashwinb",
+      "url": "https://github.com/ashwinb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19390?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "a1b3d89ad7f47f4d8e5cb6510bb6ba0e3bbabb72",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a1b3d89ad7f47f4d8e5cb6510bb6ba0e3bbabb72",
+              "message": "fix: small cleanup for README",
+              "files_changed": [
+                {
+                  "filename": "README.md",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: README.md ---\n@@ -55,12 +55,6 @@ This will install all dependencies required to (1) Build and start a Llama Stack\n Once your server is started, you should have seen outputs --\n ```\n ...\n-Serving POST /agentic_system/session/delete\n-Serving POST /agentic_system/session/get\n-Serving POST /agentic_system/step/get\n-Serving POST /agentic_system/turn/get\n-Serving GET /telemetry/get_trace\n-Serving POST /telemetry/log_event\n Listening on :::8321\n INFO:     Started server process [587053]\n INFO:     Waiting for application startup.\n@@ -112,7 +106,6 @@ Start an app (local) and interact with it by running the following command:\n ```bash\n PYTHONPATH=. python examples/agent_store/app.py localhost 8321\n ```\n-This will start a Mesop app and you can go to `localhost:7860` to play with the chat interface.\n \n <img src=\"demo.png\" alt=\"Chat App\" width=\"600\"/>"
+            },
+            {
+              "sha": "d53823ebfcc40f3fe24a62db58547f3fc9613a55",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d53823ebfcc40f3fe24a62db58547f3fc9613a55",
+              "message": "fix: update scripts so you are explicitly asked for model IDs and we dont pick random models whic...",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "03d17158b31d5cfa3b030881af7113c1705e0214",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/03d17158b31d5cfa3b030881af7113c1705e0214",
+              "message": "Bump version to 0.1.0",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e166be6052ab15b8f993f5b35f1705b2ba4e31be",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e166be6052ab15b8f993f5b35f1705b2ba4e31be",
+              "message": "Bump version to 0.0.63",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "df4451a173fe1edede08aafb063eb34a584db770",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/df4451a173fe1edede08aafb063eb34a584db770",
+              "message": "Interio: blurt out an error when we cannot json decode",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8b58f973d16c6bd4bc5ef45d8b10d694533724b1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8b58f973d16c6bd4bc5ef45d8b10d694533724b1",
+              "message": "Fix Interio",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f13e4eda5df6bef49ab4e0a06533fddbe3ceb389",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f13e4eda5df6bef49ab4e0a06533fddbe3ceb389",
+              "message": "Fix ImageMedia reference, format \"content\" properly",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d330d914142739349bc9ae253d8f10b50498ccff",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d330d914142739349bc9ae253d8f10b50498ccff",
+              "message": "Update for the new InterleavedContent type (#146)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "865538539fccc1d84b62f0c38a7c1aeb2c7d471c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/865538539fccc1d84b62f0c38a7c1aeb2c7d471c",
+              "message": "Bump version to 0.0.62",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3055bf0877df899ea21201e2b0d019468f57dfcc",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3055bf0877df899ea21201e2b0d019468f57dfcc",
+              "message": "Add Dinesh to CODEOWNERS",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "069bc8a28468ceb1bc9b5d29ee3b97602f62dc28",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/069bc8a28468ceb1bc9b5d29ee3b97602f62dc28",
+              "message": "Bump version to 0.0.61",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "77518bb80e472946d02219b1dfc60a44657305b3",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/77518bb80e472946d02219b1dfc60a44657305b3",
+              "message": "Bump version to 0.0.60",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0b120033c7abcf9fdf2bbbb6f7203837b74ab6e2",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0b120033c7abcf9fdf2bbbb6f7203837b74ab6e2",
+              "message": "Bump version to 0.0.59",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "802d4cb33909589f80902b97d1397e1314ecc1bd",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/802d4cb33909589f80902b97d1397e1314ecc1bd",
+              "message": "Bump version to 0.0.58",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "aca0573175b30933bc636fe8d5162bba4669b4f6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/aca0573175b30933bc636fe8d5162bba4669b4f6",
+              "message": "Make agent_store slightly less terrible",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "89293c21f8d0e75225a2a227fe21cb7325afe72e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/89293c21f8d0e75225a2a227fe21cb7325afe72e",
+              "message": "Cleanup of example scripts to better handle error conditions",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ae08e590d77f30371c32ff5d6c1dfd4b40f0fe95",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ae08e590d77f30371c32ff5d6c1dfd4b40f0fe95",
+              "message": "Bump version to 0.0.55",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3c2ed8a668ff5a8dccfc4382b07f0e539ab30312",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3c2ed8a668ff5a8dccfc4382b07f0e539ab30312",
+              "message": "Bump version to 0.0.54",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6403676b4fd5f14f1642ba87fae9f14a61e789e6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6403676b4fd5f14f1642ba87fae9f14a61e789e6",
+              "message": "Bump version to 0.0.53",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8ec349c68a6c47d54c28ac688fa97417b0cd4129",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8ec349c68a6c47d54c28ac688fa97417b0cd4129",
+              "message": "Bump version to 0.0.49",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "5a712df77a25dfd28e946c5df5f1e2de4edd9af9",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5a712df77a25dfd28e946c5df5f1e2de4edd9af9",
+              "message": "Bump version to 0.0.47",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3f49cefe163eeedbd404a083946974d5f0638fbd",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3f49cefe163eeedbd404a083946974d5f0638fbd",
+              "message": "Bump version to 0.0.46",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e2a18f9e2203dc04d29995ab768f477ea0dd3f79",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e2a18f9e2203dc04d29995ab768f477ea0dd3f79",
+              "message": "Bump version to 0.0.45",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e53553b647d26f15b4742773dee5eb9a1452cba1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e53553b647d26f15b4742773dee5eb9a1452cba1",
+              "message": "Bump version to 0.0.44",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "5d13e2748a653579a1bdd0ebe2cbc10855c0bd75",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5d13e2748a653579a1bdd0ebe2cbc10855c0bd75",
+              "message": "Bump version to 0.0.41",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "9d915bd1b0adf8dbe807aee4f341e0980c46a088",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9d915bd1b0adf8dbe807aee4f341e0980c46a088",
+              "message": "Bump version to 0.0.40",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "9c421c9f5ccbe6a22f37228ec3e57345adb71eba",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9c421c9f5ccbe6a22f37228ec3e57345adb71eba",
+              "message": "Bump version to 0.0.39",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8c230ab1c42d8b67add85e39647b66ae29f4d7b4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8c230ab1c42d8b67add85e39647b66ae29f4d7b4",
+              "message": "Bump version to 0.0.38",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "fd6f3b345b93f3c60ec42694221986ad90b2fd48",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/fd6f3b345b93f3c60ec42694221986ad90b2fd48",
+              "message": "Bump version to 0.0.37",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b7d157055c969b02da79d5d6ed6d59b972dbaa49",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b7d157055c969b02da79d5d6ed6d59b972dbaa49",
+              "message": "Bump version to 0.0.36",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "9d1864e158b027a83f85e2b3727ab0d75bcda5ed",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9d1864e158b027a83f85e2b3727ab0d75bcda5ed",
+              "message": "Llama Guard vision demo",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "62262d549d9ec8575e6866fdcf6420511697972c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/62262d549d9ec8575e6866fdcf6420511697972c",
+              "message": "Bump version to 0.0.35",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f1c3183c623518070cc5525484a33e4727dc56ac",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f1c3183c623518070cc5525484a33e4727dc56ac",
+              "message": "Support for Llama3.2 models (#82)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a81cdebcac27974c3ee01ed76c01ca5b77f2a373",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a81cdebcac27974c3ee01ed76c01ca5b77f2a373",
+              "message": "Update EventLogger",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6c9bed483d3489a5a5cc9fce59914484afca55e6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6c9bed483d3489a5a5cc9fce59914484afca55e6",
+              "message": "ShieldResponse -> SafetyViolation",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "9ca615f9e0ab6b431df34ba0ae16d39ee17b1ca0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9ca615f9e0ab6b431df34ba0ae16d39ee17b1ca0",
+              "message": "Nuke ShieldDefinition, just a single str",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c0f72b49e3274ae26e345d40f804c375d6b07ba8",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c0f72b49e3274ae26e345d40f804c375d6b07ba8",
+              "message": "Fix requirements.txt",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "7fcdb47d513f86712d55f34cf5ffd3955e400948",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7fcdb47d513f86712d55f34cf5ffd3955e400948",
+              "message": "Bump version to 0.0.21",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "722ef24586282d0160b43f098e4949c91060a715",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/722ef24586282d0160b43f098e4949c91060a715",
+              "message": "Upgrade llama guard demo",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "21cd7cf1d933fea844c36c501fef235986e7523c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/21cd7cf1d933fea844c36c501fef235986e7523c",
+              "message": "Bump version to 0.0.18",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "af6fa9dd6f8686d4a7914e9233eb59094862a131",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/af6fa9dd6f8686d4a7914e9233eb59094862a131",
+              "message": "API updates (#75)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "2b2e628ec8d656ccf83fd0e6137f5bf3f4d5862c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2b2e628ec8d656ccf83fd0e6137f5bf3f4d5862c",
+              "message": "Bump version to 0.0.16",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "7e83fb2d7c5fd3f71b7fd9844bb0b1d0521b9fa6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7e83fb2d7c5fd3f71b7fd9844bb0b1d0521b9fa6",
+              "message": "Bump version to 0.0.15",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "5394b01e6e5ebb638a0e1b7d4638e99e0c423c1a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5394b01e6e5ebb638a0e1b7d4638e99e0c423c1a",
+              "message": "Update InterleavedTextMedia type",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0e8dd7c261d7b0ca01c5d87d671896d72292a59b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0e8dd7c261d7b0ca01c5d87d671896d72292a59b",
+              "message": "Fix import",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "06a5a16b4bfbe22b412f9bced05b566ab0fb2465",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/06a5a16b4bfbe22b412f9bced05b566ab0fb2465",
+              "message": "API Updates (#60)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d494e54b593df535030015491058b9296672c570",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d494e54b593df535030015491058b9296672c570",
+              "message": "llama_models.llama3_1 -> llama_models.llama3",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d8009c1cae3f03afd472fd8e020264e2a35a8131",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d8009c1cae3f03afd472fd8e020264e2a35a8131",
+              "message": "Remove setup.py since we don't have a pip package for this repository now",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "afa063097996eb815a98ec359defe94490f254eb",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/afa063097996eb815a98ec359defe94490f254eb",
+              "message": "Introducing Llama Stack distributions (#37)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a5aef6d9bd2e15746b7bc4d5a914f09a33e6f61b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a5aef6d9bd2e15746b7bc4d5a914f09a33e6f61b",
+              "message": "Initial commit",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1585539,
+      "username": "benjibc",
+      "url": "https://github.com/benjibc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1585539?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "7c92eb274924b38b110ca1759dd487817980e5af",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7c92eb274924b38b110ca1759dd487817980e5af",
+              "message": "[LlamaStack][Client] Add https (#108)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 60317842,
+      "username": "cheesecake100201",
+      "url": "https://github.com/cheesecake100201",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60317842?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "4e2406abc6302644de06417e22763490e9652c36",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4e2406abc6302644de06417e22763490e9652c36",
+              "message": "Added ToolResponseMessage in messages list for execute_turn method (#93)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "681260b901ed64b399a670020b62ade64839b9e3",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/681260b901ed64b399a670020b62ade64839b9e3",
+              "message": "Corrected agent config key (#92)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1924561,
+      "username": "chuenlok",
+      "url": "https://github.com/chuenlok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1924561?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/110",
+              "title": "Dynamically infer available shields instead of `--disable-safety`"
+            }
+          ],
+          "commits": [
+            {
+              "sha": "7c5acc6c8f564da1403e10feb1f565791f7a7eea",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7c5acc6c8f564da1403e10feb1f565791f7a7eea",
+              "message": "remove the --disable-safety flag (#116)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 98582575,
+      "username": "cmodi-meta",
+      "url": "https://github.com/cmodi-meta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98582575?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "21c526f9691011255dfb856ba4f9cdd90d51878c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/21c526f9691011255dfb856ba4f9cdd90d51878c",
+              "message": "Move demo apps from Apps to SDK (#207)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "622e27bf710db2226cd4fa89c8a9fe08af1028c6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/622e27bf710db2226cd4fa89c8a9fe08af1028c6",
+              "message": "Readme Cleanup and add LS-Swift Project Dependecy in iOSQuickDemo",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "50d1e5e7768ef92164555479239a19433d7edc19",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/50d1e5e7768ef92164555479239a19433d7edc19",
+              "message": "Including LS-Swift Project Dependency and Rolling back to LS v0.1.4",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b1e6d0d46bf69ce0b09de8c516fe185d1a966d39",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b1e6d0d46bf69ce0b09de8c516fe185d1a966d39",
+              "message": "Clean-up iOSCalendarAssitantWithLocalInf Project Dependencies (#206)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "471155ba0a38b5bfefab782ea34e4fa63b2867d4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/471155ba0a38b5bfefab782ea34e4fa63b2867d4",
+              "message": "Update README.md (#202)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a4b980b02696b7515e8146c22a10a85b3bb384a5",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a4b980b02696b7515e8146c22a10a85b3bb384a5",
+              "message": "Modifying Agentic System Prompt",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "bec1eeb2a20c93304d217e0a3588013046686091",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/bec1eeb2a20c93304d217e0a3588013046686091",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "611cb35cc617f8ad46ade4c5919c72f6c66070c0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/611cb35cc617f8ad46ade4c5919c72f6c66070c0",
+              "message": "Local custom toolcalling (#142)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f14a73c76a9e4de3f7fd5ae5d13c231bd70ec2ce",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f14a73c76a9e4de3f7fd5ae5d13c231bd70ec2ce",
+              "message": "[Android App] Bug fix in getting recent messages (#138)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8353893,
+      "username": "cynikolai",
+      "url": "https://github.com/cynikolai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8353893?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/27",
+              "title": "Bug?: Embedded and Malicious Probabilities (index 2 is out of bounds for dimension 1 with size 2)"
+            }
+          ],
+          "commits": []
+        }
+      ]
+    },
+    {
+      "id": 185562542,
+      "username": "dineshyv",
+      "url": "https://github.com/dineshyv",
+      "avatar_url": "https://avatars.githubusercontent.com/u/185562542?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "732b9f4d0760d576fc116ba010e455bcd7ba685e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/732b9f4d0760d576fc116ba010e455bcd7ba685e",
+              "message": "update stack apps for 0.1.0 (#152)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "affbb1376babbc3657d460e05929ec100d8ba1aa",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/affbb1376babbc3657d460e05929ec100d8ba1aa",
+              "message": "Bump version to 0.0.56",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "2c860555e3c019693bb69ee8de562383f68771df",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2c860555e3c019693bb69ee8de562383f68771df",
+              "message": "fix run command for agent example in README (#102)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6599399,
+      "username": "dltn",
+      "url": "https://github.com/dltn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6599399?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "3d79fde6fd17501a0756f41ec21e5cd0ba981a81",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3d79fde6fd17501a0756f41ec21e5cd0ba981a81",
+              "message": "initial fixes to revive docqa (#137)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "48bf3686e51555b2908ac439880919d93831bc93",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/48bf3686e51555b2908ac439880919d93831bc93",
+              "message": "Bump version to 0.0.57",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "fe5dc01a434a0bcafa60ca4f321950c595fd9d9d",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/fe5dc01a434a0bcafa60ca4f321950c595fd9d9d",
+              "message": "fix messagelist",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "7e08dca489d4880d2829a0000eb3dad6099e4c7d",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7e08dca489d4880d2829a0000eb3dad6099e4c7d",
+              "message": "fix outdated model name",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "45f25c2dcaaf507c0276323c25659c590983fbf9",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/45f25c2dcaaf507c0276323c25659c590983fbf9",
+              "message": "Add a local/remote picker to iOSCalendarAssistantWithLocalInf",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "18cc5490dac5d109c6314d0318cf70499fadf9f4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/18cc5490dac5d109c6314d0318cf70499fadf9f4",
+              "message": "update example for spinquant and refresh libraries",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "34784c7ba3b8ae0ff02c8ddb61c9a6fcc81f64b9",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/34784c7ba3b8ae0ff02c8ddb61c9a6fcc81f64b9",
+              "message": "gitignore Package.resolved",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "91de21b232a1069c0a4acb3e39e2aeff7c3acdca",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/91de21b232a1069c0a4acb3e39e2aeff7c3acdca",
+              "message": "fix on-device build",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6da52de998d0c0092e4b0b0ca2b17789b4a19804",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6da52de998d0c0092e4b0b0ca2b17789b4a19804",
+              "message": "add vision inference example",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e6a6f5cb153b88ea2fae2233e2720182fc4cf340",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e6a6f5cb153b88ea2fae2233e2720182fc4cf340",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "79b069b91bdf3c5f73879b93516acbbbfb2dce40",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/79b069b91bdf3c5f73879b93516acbbbfb2dce40",
+              "message": "Create SECURITY.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "28aeb20f8691dae47f47ccdaf41683eb7d0c9dcd",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/28aeb20f8691dae47f47ccdaf41683eb7d0c9dcd",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "eaf582a2497346cf9a0e56dbe1188692c6356f7c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/eaf582a2497346cf9a0e56dbe1188692c6356f7c",
+              "message": "Update iOSCalendarAssistantWithLocalInf to use public package and fix build",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d963d0388297bd3f532429464c160fd3b6264b95",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d963d0388297bd3f532429464c160fd3b6264b95",
+              "message": "Update iOS example apps to use public package",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3f8004f9048a8151e89e079c297f7e0f5c2625ec",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3f8004f9048a8151e89e079c297f7e0f5c2625ec",
+              "message": "Update iOSCalendarAssistant to use public package",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e698ce316782419bf4591650c9a855fe5139f36a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e698ce316782419bf4591650c9a855fe5139f36a",
+              "message": "Fix ClientManager singleton",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d3117c84ca39e81cbe8cf493fc0552c2498cef72",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d3117c84ca39e81cbe8cf493fc0552c2498cef72",
+              "message": "Add info about custom tool API keys",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "74171879f02a1cbc683862f2d04c2220535389a3",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/74171879f02a1cbc683862f2d04c2220535389a3",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ee9f9235a8a2b9a17ccd8df8b45b244febd52688",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ee9f9235a8a2b9a17ccd8df8b45b244febd52688",
+              "message": "fix truncation bug",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "bb0a336e232a9bf4a17736b7a9a8385dab3cb2cf",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/bb0a336e232a9bf4a17736b7a9a8385dab3cb2cf",
+              "message": "adjust color palette",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b266c1c62bea3c184a93b1bb295468a41d7b555b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b266c1c62bea3c184a93b1bb295468a41d7b555b",
+              "message": "Add links to shields",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d129fdaf6b3f23cd0e01fb6459697fc7f60fc8f0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d129fdaf6b3f23cd0e01fb6459697fc7f60fc8f0",
+              "message": "Add shields to README",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d0554ae7b69f1717dafabd10c74dc873c3838afb",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d0554ae7b69f1717dafabd10c74dc873c3838afb",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 304457,
+      "username": "ehhuang",
+      "url": "https://github.com/ehhuang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/304457?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "8e20887cf61aa3f03a76cbf6c1eef3e1294e41ec",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8e20887cf61aa3f03a76cbf6c1eef3e1294e41ec",
+              "message": "feat: add an example with image input (#211)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "355abf4994186be2fbf27e10fcce6995af51b8bc",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/355abf4994186be2fbf27e10fcce6995af51b8bc",
+              "message": "chore: simplify imports (#208)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "d5ba6918e4aed93e29ab914ecdbcbc280f995e08",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/d5ba6918e4aed93e29ab914ecdbcbc280f995e08",
+              "message": "chore: update example to use new Agent API (#200)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "806bdb191d27742def4d1e21dd2482b905749d85",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/806bdb191d27742def4d1e21dd2482b905749d85",
+              "message": "fix: rag_as_attachments, rag_with_vector_db example (#198)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "fec2c4e7b598f44c9fd1deef888828c686c1274b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/fec2c4e7b598f44c9fd1deef888828c686c1274b",
+              "message": "feat: use uuid4 for vector_db_id in example (#180)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b86727e91230148ee8f742dc6b56b2df511275a4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b86727e91230148ee8f742dc6b56b2df511275a4",
+              "message": "Update CODEOWNERS",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e0a323cd079c80418cce47fb670674604bde53b3",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e0a323cd079c80418cce47fb670674604bde53b3",
+              "message": "improve e2e client tools example (#160)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22633385,
+      "username": "eltociear",
+      "url": "https://github.com/eltociear",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22633385?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "f0a55947bb62a1fbe48ee91de869033bf44b9ec1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f0a55947bb62a1fbe48ee91de869033bf44b9ec1",
+              "message": "Update README.md (#5)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 46301514,
+      "username": "grootste",
+      "url": "https://github.com/grootste",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46301514?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "8ee1b247f0242513db2fc90f04a500b0a199be33",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8ee1b247f0242513db2fc90f04a500b0a199be33",
+              "message": "Update README.md (#20)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 109216430,
+      "username": "HabebNawatha",
+      "url": "https://github.com/HabebNawatha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109216430?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "22deb4a795632b630ef3ac9c5072b6bb98af9d67",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/22deb4a795632b630ef3ac9c5072b6bb98af9d67",
+              "message": "Enable dynamic model selection via API call (#109)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3201101,
+      "username": "hardikjshah",
+      "url": "https://github.com/hardikjshah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3201101?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "3153a8418c23eef200c87f019b07f98d9f8af1e7",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3153a8418c23eef200c87f019b07f98d9f8af1e7",
+              "message": "Update README.md",
+              "files_changed": [
+                {
+                  "filename": "examples/agents/README.md",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: examples/agents/README.md ---\n@@ -40,6 +40,13 @@ A basic chatbot with web search capabilities. Shows how to create a simple agent\n ```bash\n python -m examples.agents.simple_chat --host localhost --port 8321 --model_id meta-llama/Llama-3.3-70B-Instruct\n ```\n+### Multimodal Chat (`chat_multimodal.py`)\n+\n+Demonstrates how to create an agent with multimodal capabilities\n+\n+```bash\n+python -m examples.agents.chat_multimodal --host localhost --port 8321 --model_id meta-llama/Llama-3.3-70B-Instruct\n+```\n \n ### Chat with Documents (`chat_with_documents.py`)"
+            },
+            {
+              "sha": "c6b8be2624870692b5ee9027255cffd676192f3b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c6b8be2624870692b5ee9027255cffd676192f3b",
+              "message": "feat: Updates to examples/agents  (#210)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "939f59feb9e1178e5b6ea7bb4707a0c7d7b8619c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/939f59feb9e1178e5b6ea7bb4707a0c7d7b8619c",
+              "message": "use json_response_format=True for react agent (#188)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "51f9cedb7a09527c6ed0fbac24fefe33f342c825",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/51f9cedb7a09527c6ed0fbac24fefe33f342c825",
+              "message": "[Interio] Added demo image",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3752987411738213b8daa887995b01cffc1e65f7",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3752987411738213b8daa887995b01cffc1e65f7",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b54d5b8e9cd6686060272a6d013e5eee73b9d828",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b54d5b8e9cd6686060272a6d013e5eee73b9d828",
+              "message": "AgentStore: Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3d28029efb458694821620d5a7d3cb558496a2f1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3d28029efb458694821620d5a7d3cb558496a2f1",
+              "message": "Agent Store Demo (#77)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "13ba16791fb7ea2559ecaf6d8ece31bf985fa4d4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/13ba16791fb7ea2559ecaf6d8ece31bf985fa4d4",
+              "message": "updated e2e tests to reflect json tool call format (#45)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "933585b28f8f191162a434b46e8f0bbe1d66e381",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/933585b28f8f191162a434b46e8f0bbe1d66e381",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8f937d34db4233b9ca1a6a2b5e361741e65895cd",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8f937d34db4233b9ca1a6a2b5e361741e65895cd",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "680fed5465cba32c00fcdf158ce4797733ba8c62",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/680fed5465cba32c00fcdf158ce4797733ba8c62",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "2cd0053a17758a4ee50452ef17771383da64dacb",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2cd0053a17758a4ee50452ef17771383da64dacb",
+              "message": "Move CustomTool inside package  (#16)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7343099,
+      "username": "hemajv",
+      "url": "https://github.com/hemajv",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7343099?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "23eb12bf79292b83a9f1675b8fa5b911ddd8d389",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/23eb12bf79292b83a9f1675b8fa5b911ddd8d389",
+              "message": "feat: Add another custom tool function as an example for users (#172)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 28563697,
+      "username": "heyjustinai",
+      "url": "https://github.com/heyjustinai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28563697?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/113",
+              "title": "Can't run inference examples"
+            },
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/99",
+              "title": "[github-workflow] templates for issues and PR"
+            },
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/97",
+              "title": "[interior-design-app] failed to run, outdated imports"
+            }
+          ],
+          "commits": [
+            {
+              "sha": "4c2fc5dd5ac5df46544a7ae70b021b0a510a13f4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4c2fc5dd5ac5df46544a7ae70b021b0a510a13f4",
+              "message": "quick fixes on memory agent and requirement.txt (#135)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "64ee0f070d1f853862fdefa4ce0e85daea839d3c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/64ee0f070d1f853862fdefa4ce0e85daea839d3c",
+              "message": "RAG app example (#118)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "bea9f6e4ae2629826603a2ba8f0d853442206ff8",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/bea9f6e4ae2629826603a2ba8f0d853442206ff8",
+              "message": "Interior app refactor & github templates (#98)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        },
+        {
+          "repository_url": "https://github.com/meta-llama/llama-prompt-ops",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "c2eb9874b9eca520531d6a96822476c9977df469",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/c2eb9874b9eca520531d6a96822476c9977df469",
+              "message": "update to ver 0.0.5",
+              "files_changed": [
+                {
+                  "filename": "pyproject.toml",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: pyproject.toml ---\n@@ -4,7 +4,7 @@ build-backend = \"setuptools.build_meta\"\n \n [project]\n name = \"llama-prompt-ops\"\n-version = \"0.0.4\"\n+version = \"0.0.5\"\n description = \"A tool for migrating and optimizing prompts\"\n readme = \"README.md\"\n authors = []"
+            },
+            {
+              "sha": "a460bde28a2f8de6e9ad97bb7c429c74f3f83a67",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/a460bde28a2f8de6e9ad97bb7c429c74f3f83a67",
+              "message": "update readme",
+              "files_changed": [
+                {
+                  "filename": "README.md",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: README.md ---\n@@ -1,7 +1,28 @@\n <h1 align=\"center\"> Llama Prompt Ops </h1>\n \n ## What is llama-prompt-ops?\n-[![PyPI version](https://img.shields.io/pypi/v/llama-prompt-ops.svg)](https://pypi.org/project/llama-prompt-ops/)\n+<p align=\"center\">\n+  <a href=\"https://pypi.org/project/llama-prompt-ops/\"><img src=\"https://img.shields.io/pypi/v/llama-prompt-ops.svg\" /></a>\n+</p>\n+<p align=\"center\">\n+  <a href=\"https://llama.developer.meta.com/?utm_source=llama-prompt-ops&utm_medium=readme&utm_campaign=main\"><img src=\"https://img.shields.io/badge/Llama_API-Join_Waitlist-brightgreen?logo=meta\" /></a>\n+  <a href=\"https://llama.developer.meta.com/docs?utm_source=llama-prompt-ops&utm_medium=readme&utm_campaign=main\"><img src=\"https://img.shields.io/badge/Llama_API-Documentation-4BA9FE?logo=meta\" /></a>\n+  \n+</p>\n+\n+<p align=\"center\">\n+  <a href=\"https://github.com/meta-llama/llama-models/blob/main/models/?utm_source=llama-prompt-ops&utm_medium=readme&utm_campaign=main\"><img alt=\"Llama Model cards\" src=\"https://img.shields.io/badge/Llama_OSS-Model_cards-green?logo=meta\" /></a>\n+  <a href=\"https://www.llama.com/docs/overview/?utm_source=llama-prompt-ops&utm_medium=readme&utm_campaign=main\"><img alt=\"Llama Documentation\" src=\"https://img.shields.io/badge/Llama_OSS-Documentation-4BA9FE?logo=meta\" /></a>\n+  <a href=\"https://huggingface.co/meta-llama\"><img alt=\"Hugging Face meta-llama\" src=\"https://img.shields.io/badge/Hugging_Face-meta--llama-yellow?logo=huggingface\" /></a>\n+  \n+</p>\n+<p align=\"center\">\n+  <a href=\"https://github.com/meta-llama/synthetic-data-kit\"><img alt=\"Llama Tools Syntethic Data Kit\" src=\"https://img.shields.io/badge/Llama_Tools-synthetic--data--kit-orange?logo=meta\" /></a>\n+  <a href=\"https://github.com/meta-llama/llama-prompt-ops\"><img alt=\"Llama Tools Syntethic Data Kit\" src=\"https://img.shields.io/badge/Llama_Tools-llama--prompt--ops-orange?logo=meta\" /></a>\n+    <a href=\"https://github.com/meta-llama/llama-cookbook\"><img alt=\"Llama Cookbook\" src=\"https://img.shields.io/badge/Llama_Cookbook-llama--cookbook-orange?logo=meta\" /></a>\n+</p>\n+\n+\n \n llama-prompt-ops is a Python package that **automatically optimizes prompts** for Llama models. It transforms prompts that work well with other LLMs into prompts that are optimized for Llama models, improving performance and reliability."
+            },
+            {
+              "sha": "1c40f8350fafa131d72674b673abd2a00e2a4b01",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/1c40f8350fafa131d72674b673abd2a00e2a4b01",
+              "message": "update hotpotqa, readme",
+              "files_changed": [
+                {
+                  "filename": "README.md",
+                  "status": "modified"
+                },
+                {
+                  "filename": "docs/README.md",
+                  "status": "modified"
+                },
+                {
+                  "filename": "docs/dataset_adapter_selection_guide.md",
+                  "status": "modified"
+                },
+                {
+                  "filename": "docs/metric_selection_guide.md",
+                  "status": "modified"
+                },
+                {
+                  "filename": "use-cases/hotpotqa/README.md",
+                  "status": "added"
+                },
+                {
+                  "filename": "use-cases/hotpotqa/hotpotqa.yaml",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: README.md ---\n@@ -1,6 +1,7 @@\n <h1 align=\"center\"> Llama Prompt Ops </h1>\n \n ## What is llama-prompt-ops?\n+[![PyPI version](https://img.shields.io/pypi/v/llama-prompt-ops.svg)](https://pypi.org/project/llama-prompt-ops/)\n \n llama-prompt-ops is a Python package that **automatically optimizes prompts** for Llama models. It transforms prompts that work well with other LLMs into prompts that are optimized for Llama models, improving performance and reliability.\n \n@@ -52,7 +53,7 @@ To get started with llama-prompt-ops, you'll need:\n ### HotpotQA\n <table>\n <tr>\n-<td width=\"100%\"><img src=\"./docs/_static/output-hotpotqa.png\" alt=\"HotpotQA Benchmark Results\"></td>\n+<td width=\"100%\"><img src=\"./docs/_static/output-hotpotqa.png\" onerror=\"this.onerror=null;this.src='https://github.com/user-attachments/assets/52080f54-d1ca-4d21-8263-a9b2ee1d3c10'\" alt=\"HotpotQA Benchmark Results\"></td>\n </tr>\n </table>\n \n\n--- File: docs/README.md ---\n@@ -39,8 +39,6 @@ llama-prompt-ops supports various inference providers and endpoints to fit your\n - OpenRouter (cloud-based API)\n - vLLM (local deployment)\n - NVIDIA NIMs (optimized containers)\n-- OpenAI-compatible endpoints\n-\n \n ## Supported Formats at a Glance\n \n@@ -61,5 +59,5 @@ llama-prompt-ops supports various inference providers and endpoints to fit your\n We've prepared several complete examples to help you get started:\n \n - [Multi Hop Question Answering](../use-cases/hotpotqa/): Optimize prompts for Multi-hop QA tasks\n-- [Customer Service](../use-cases/facility-support-analyzer/): Categorize and analyze messages\n+- [Facility Support Analyzer](../use-cases/facility-support-analyzer/): Categorize and analyze messages\n \n\n--- File: docs/dataset_adapter_selection_guide.md ---\n@@ -10,6 +10,33 @@ This guide helps you choose the right dataset adapter for your use case or deter\n | **RAGJSONAdapter** | Retrieval-augmented generation | `[{\"question\": \"...\", \"context\": \"...\", \"answer\": \"...\"}]` | When your dataset includes retrieval contexts or documents alongside questions and answers |\n | **Custom DatasetAdapter** | Specialized formats or processing | Any custom structure | When existing adapters don't meet your needs even with configuration |\n \n+\n+## Decision Flowchart for DatasetAdapter Selection\n+\n+1. **Is your dataset in JSON format?**\n+   - **Yes**: Continue to next question\n+   - **No**: Is it CSV or YAML? Use StandardJSONAdapter with appropriate file_format parameter\n+\n+2. **Does your dataset have question, context, and answer fields?**\n+   - **Yes**: Use RAGJSONAdapter\n+   - **No**: Create a custom adapter\n+\n+## Configuration vs. Custom DatasetAdapter\n+\n+In many cases, you can use StandardJSONAdapter with custom configuration instead of creating a new adapter:\n+\n+```yaml\n+dataset:\n+  adapter_class: \"prompt_ops.core.datasets.StandardJSONAdapter\"\n+  path: \"path/to/dataset.json\"\n+  adapter_params:\n+    input_field: [\"nested\", \"field\", \"path\"]\n+    output_field: \"answer\"\n+```\n+\n+Only create a custom dataset adapter when this level of configuration is insufficient for your needs.\n+\n+\n ## When to Create a Custom DatasetAdapter\n \n Create a custom dataset adapter when:\n@@ -67,41 +94,3 @@ class MyCustomAdapter(DatasetAdapter):\n         # Extract any relevant metadata\n         return {}\n ```\n-\n-## Decision Flowchart for DatasetAdapter Selection\n-\n-1. **Is your dataset in JSON format?**\n-   - **Yes**: Continue to next question\n-   - **No**: Is it CSV or YAML? Use StandardJSONAdapter with appropriate file_format parameter\n-\n-2. **Does your dataset have question, context, and answer fields?**\n-   - **Yes**: Use RAGJSONAdapter\n-   - **No**: Continue to next question\n-\n-3. **Is your dataset for customer service categorization?**\n-   - **Yes**: Use FacilityAdapter\n-   - **No**: Continue to next question\n-\n-4. **Is your dataset for multi-hop question answering?**\n-   - **Yes**: Use HotpotQAAdapter\n-   - **No**: Continue to next question\n-\n-5. **Can your dataset be processed with simple field mapping?**\n-   - **Yes**: Use StandardJSONAdapter with appropriate configuration\n-   - **No**: Create a custom adapter\n-\n-## Configuration vs. Custom DatasetAdapter\n-\n-In many cases, you can use StandardJSONAdapter with custom configuration instead of creating a new adapter:\n-\n-```yaml\n-dataset:\n-  adapter_class: \"prompt_ops.core.datasets.StandardJSONAdapter\"\n-  path: \"path/to/dataset.json\"\n-  adapter_params:\n-    input_field: [\"nested\", \"field\", \"path\"]\n-    output_field: \"answer\"\n-    default_value: \"N/A\"\n-```\n-\n-Only create a custom dataset adapter when this level of configuration is insufficient for your needs.\n\n--- File: docs/metric_selection_guide.md ---\n@@ -69,29 +69,6 @@ class MyCustomMetric(MetricBase):\n         pass\n ```\n \n-## Decision Flowchart for Metric Selection\n-\n-1. **Are you evaluating exact text matches?**\n-   - **Yes**: Use ExactMatchMetric\n-   - **No**: Continue to next question\n-\n-2. **Are you evaluating structured JSON responses?**\n-   - **Yes**: Continue to next question\n-   - **No**: Skip to question 5\n-\n-3. **Is your JSON evaluation for customer service categorization?**\n-   - **Yes**: Use FacilityMetric\n-   - **No**: Continue to next question\n-\n-4. **Do you need to evaluate specific JSON fields with custom weights?**\n-   - **Yes**: Use StandardJSONMetric\n-   - **No**: Continue to next question\n-\n-5. **Do you need semantic evaluation beyond exact matching?**\n-   - **Yes**: Use DSPyMetricAdapter\n-   - **No**: Consider creating a custom metric\n-\n-\n ## Configuration Examples\n \n ### ExactMatchMetric Configuration\n\n--- File: use-cases/hotpotqa/README.md ---\n@@ -0,0 +1,42 @@\n+# HotpotQA Use Case\n+\n+This directory contains the necessary files to run prompt optimization for multi-hop question answering using the HotpotQA dataset.\n+\n+## Getting Started\n+\n+### 1. Download the Dataset\n+\n+Before you can run the optimization, you need to download the HotpotQA dataset. Run the following command from this directory:\n+\n+```bash\n+curl -O http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json\n+```\n+\n+This will download the development set with distractors.\n+\n+### 2. Configure Your Environment\n+\n+Make sure you have set up your API keys in the `.env` file at the root of the project:\n+\n+```\n+OPENROUTER_API_KEY=your_key_here\n+# or\n+HUGGINGFACE_API_KEY=your_key_here\n+```\n+\n+### 3. Run Optimization\n+\n+From the root directory of the project, run:\n+\n+```bash\n+prompt-ops migrate --config configs/hotpotqa.yaml\n+```\n+\n+## Dataset Information\n+\n+The HotpotQA dataset is a question answering dataset featuring complex, multi-hop questions that require reasoning across multiple documents to answer. Each example contains:\n+\n+- A question requiring multi-hop reasoning\n+- Supporting facts from multiple documents\n+- Distractor documents that are not relevant to the question\n+- The correct answer\n\n--- File: use-cases/hotpotqa/hotpotqa.yaml ---\n@@ -6,7 +6,7 @@ model:\n \n dataset:\n   adapter_class: \"src/llama_prompt_ops/datasets/hotpotqa/adapter.py\"\n-  path: \"../use-cases/hotpotqa/hotpotqa_sample.json\"\n+  path: \"hotpot_dev_distractor_v1.json\"\n   train_size: 0.07\n   validation_size: 0.07\n   test_size: 0.07"
+            },
+            {
+              "sha": "3f4eb7653752a75ca8fe4a5198ba5fa988546435",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/3f4eb7653752a75ca8fe4a5198ba5fa988546435",
+              "message": "update to 0.0.4 - added manifest, update readme",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "1c2980d76fb2f3a66cca669cdec854bd4e2bddc3",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/1c2980d76fb2f3a66cca669cdec854bd4e2bddc3",
+              "message": "update readme and pypi version",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "5d2bf0af0d8336517b49d4b88900f4dae0406f07",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/5d2bf0af0d8336517b49d4b88900f4dae0406f07",
+              "message": "update setup tools",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c572f8fdf65a7af02257f94ddcdf026181113e09",
+              "url": "https://github.com/meta-llama/llama-prompt-ops/commit/c572f8fdf65a7af02257f94ddcdf026181113e09",
+              "message": "Initial commit",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2421248,
+      "username": "jameswnl",
+      "url": "https://github.com/jameswnl",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2421248?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "e190e79d551d41fe08dac885b3cb1b9f2bac47c0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e190e79d551d41fe08dac885b3cb1b9f2bac47c0",
+              "message": "hello example missing provider_data for the search api key (#175)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 254562,
+      "username": "jasonLaster",
+      "url": "https://github.com/jasonLaster",
+      "avatar_url": "https://avatars.githubusercontent.com/u/254562?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "2fdc4a7707c44b6d9592ce05c9f1caeb9f88ec8a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2fdc4a7707c44b6d9592ce05c9f1caeb9f88ec8a",
+              "message": "Remove unintentional article (#4)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 124309394,
+      "username": "JeffreyLind3",
+      "url": "https://github.com/JeffreyLind3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124309394?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "b23022d971edcfcffebd8e6d88bb6d13b37c8454",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b23022d971edcfcffebd8e6d88bb6d13b37c8454",
+              "message": "Fix Incorrect URL in README.md (#130)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 535090,
+      "username": "jeffxtang",
+      "url": "https://github.com/jeffxtang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/535090?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/161",
+              "title": "iOSCalendarAssistantWithLocalInf example missing frameworks + other build errors"
+            }
+          ],
+          "commits": [
+            {
+              "sha": "3ec1309c62756d9d415692b6ead6d27c5e905e0e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3ec1309c62756d9d415692b6ead6d27c5e905e0e",
+              "message": "ios demo README update",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0adb6049eb265d8448be8c204d85fecc3b1f4c77",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0adb6049eb265d8448be8c204d85fecc3b1f4c77",
+              "message": "RemoteAgents passing API key",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f3383f454e19e0c677468f6dc030e0a1d4567fea",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f3383f454e19e0c677468f6dc030e0a1d4567fea",
+              "message": "passing together api key in remote inference; readme update",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ca5ff79020cdbe0da022db20e0abf4a66c178d84",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ca5ff79020cdbe0da022db20e0abf4a66c178d84",
+              "message": "Added the image support to iOS QuickDemo (#193)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "280a912f88a01412f4fc4b0fe5622cda196ace16",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/280a912f88a01412f4fc4b0fe5622cda196ace16",
+              "message": "README update for LS 014 (#186)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "58daa98f96394e1f65aa65593fe929ef8bf33ee2",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/58daa98f96394e1f65aa65593fe929ef8bf33ee2",
+              "message": "README and code update for LS 0.1.4 and ET submod move (#185)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "9cd8b7a7cb86f72a3dec728093ab1c0aefc07073",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/9cd8b7a7cb86f72a3dec728093ab1c0aefc07073",
+              "message": "ios calendar assistant demo local inference update for LS013 (#182)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b69736bff330d07bd87a3ec52c5153bd343df92a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b69736bff330d07bd87a3ec52c5153bd343df92a",
+              "message": "iOSCalendarAssistant update for LS014 (#183)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b78b2f5c3ea964a4541a4c8429df46ea0c2fe071",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b78b2f5c3ea964a4541a4c8429df46ea0c2fe071",
+              "message": "update iOS demos for LS0.1.3 (#173)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a6136af7ae543f81d99fc57e187431933a20458f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a6136af7ae543f81d99fc57e187431933a20458f",
+              "message": "update for local inference demo for LS 0.1 (#163)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "151ed73aaee244d4c4a9e0fa30e775ba2651fe09",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/151ed73aaee244d4c4a9e0fa30e775ba2651fe09",
+              "message": "iOS new inference quick start demo and updated calendar assistant demo (#155)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 113949869,
+      "username": "kplawiak",
+      "url": "https://github.com/kplawiak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/113949869?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "7bd441069c015fe1f33313e79585bb0224ef027c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7bd441069c015fe1f33313e79585bb0224ef027c",
+              "message": "use llama-stack-client (#83)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 54533009,
+      "username": "leonardtan13",
+      "url": "https://github.com/leonardtan13",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54533009?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "5a9c4571328e15b0a256efea201b2bdf7cc25c83",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5a9c4571328e15b0a256efea201b2bdf7cc25c83",
+              "message": "Update README.md (#8)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10967951,
+      "username": "MaximeRivest",
+      "url": "https://github.com/MaximeRivest",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10967951?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "80cca420810dcf9f7914aa4fe5a94c441b409391",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/80cca420810dcf9f7914aa4fe5a94c441b409391",
+              "message": "Update README.md (#85)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4494906,
+      "username": "MichaelClifford",
+      "url": "https://github.com/MichaelClifford",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4494906?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "2b11d27c145746008e03db63c4cd64efbf5cbb2c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2b11d27c145746008e03db63c4cd64efbf5cbb2c",
+              "message": "fix: react_agent.py needs tavily_search_api_key (#189)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 123378149,
+      "username": "MustaphaU",
+      "url": "https://github.com/MustaphaU",
+      "avatar_url": "https://avatars.githubusercontent.com/u/123378149?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "fe65b3bf47307fff92f3e60c07d0f27717eadf59",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/fe65b3bf47307fff92f3e60c07d0f27717eadf59",
+              "message": "Fix typo README.md (#23)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 853234,
+      "username": "raghotham",
+      "url": "https://github.com/raghotham",
+      "avatar_url": "https://avatars.githubusercontent.com/u/853234?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "163ede4f99c4cdc0a89002c5fa68f41e2a7328a2",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/163ede4f99c4cdc0a89002c5fa68f41e2a7328a2",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ac5c44bde06dcb5bc449e5179e1e2142b5fda46b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ac5c44bde06dcb5bc449e5179e1e2142b5fda46b",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f73abd20d842f1b0b55d441d1cdc5a5d4786f973",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f73abd20d842f1b0b55d441d1cdc5a5d4786f973",
+              "message": "Update README.md (#61)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "46e2d04a581d17cc406ab2f6bd9db0358d808177",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/46e2d04a581d17cc406ab2f6bd9db0358d808177",
+              "message": "Update LICENSE (#57)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 61492567,
+      "username": "reidliu41",
+      "url": "https://github.com/reidliu41",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61492567?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "5f59693b907fc45c9dc059f77450123972d23f0b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5f59693b907fc45c9dc059f77450123972d23f0b",
+              "message": "docs: update readme (#203)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2980591,
+      "username": "Riandy",
+      "url": "https://github.com/Riandy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2980591?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "331caf37c67e5ad35427414d307bbbeda545f2b4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/331caf37c67e5ad35427414d307bbbeda545f2b4",
+              "message": "Fix kotlin getFilePathFromUri() for Images",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ab0371d7ea917db02ff8edcd884cf0fa08d844a1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ab0371d7ea917db02ff8edcd884cf0fa08d844a1",
+              "message": "Update README.md (#187)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6d13defe1a28bbb8ac305f362bfdeb4ae59986ba",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6d13defe1a28bbb8ac305f362bfdeb4ae59986ba",
+              "message": "Update kotlin version (#184)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "739092085817971c2a1a0d4557b3403ee3bdef7b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/739092085817971c2a1a0d4557b3403ee3bdef7b",
+              "message": "Update Android app to support Kotlin SDK v0.1.2 (#170)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "17be8bf192ce2f313b31edb5c261552ea10aaec1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/17be8bf192ce2f313b31edb5c261552ea10aaec1",
+              "message": "Update Android README.md on compatible ET version (#165)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "cc55bd535a819ca1e07b3f368ec697692025a6ec",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/cc55bd535a819ca1e07b3f368ec697692025a6ec",
+              "message": "Support remote streaming (#139)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "cf7b876dd4463403fef5ede16000dae3f11d5ead",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/cf7b876dd4463403fef5ede16000dae3f11d5ead",
+              "message": "Bump kotlin version to 0.0.54.1 (#136)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8916126,
+      "username": "Shreyanand",
+      "url": "https://github.com/Shreyanand",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8916126?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "1ab47766f8d7cbbc250ded211f83f93e66743732",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/1ab47766f8d7cbbc250ded211f83f93e66743732",
+              "message": "Change brave search API key to tavily in README (#177)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6701124,
+      "username": "sinwoobang",
+      "url": "https://github.com/sinwoobang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6701124?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "82b9e08a06af4c6d99fa27ff2bfc33da9c2c6ff6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/82b9e08a06af4c6d99fa27ff2bfc33da9c2c6ff6",
+              "message": "Replace deprecated method (#24)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 683492,
+      "username": "sulochan",
+      "url": "https://github.com/sulochan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/683492?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "80c173c10c5f1f6807e8c5937b55c9995f54e5d6",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/80c173c10c5f1f6807e8c5937b55c9995f54e5d6",
+              "message": "Remove unused import of TickerDataTool (#96)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4269898,
+      "username": "terrytangyuan",
+      "url": "https://github.com/terrytangyuan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4269898?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "6eabaa297f933b68a9319938342826b70e54e898",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6eabaa297f933b68a9319938342826b70e54e898",
+              "message": "fix: Allows users to configure host/port in react agent example (#176)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b38497b53367e2218d1f9ebf20804f0c2a86a685",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b38497b53367e2218d1f9ebf20804f0c2a86a685",
+              "message": "Require yfinance >= 0.2.54 to avoid rate limiting issue (#181)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1118194,
+      "username": "ttharuntej",
+      "url": "https://github.com/ttharuntej",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1118194?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "5ef19db54b82d71507c7de6f8a9ab2f72d03c879",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5ef19db54b82d71507c7de6f8a9ab2f72d03c879",
+              "message": "Update README.md (#213)",
+              "files_changed": [
+                {
+                  "filename": "README.md",
+                  "status": "modified"
+                }
+              ],
+              "comment_count": 0,
+              "diff_patch": "--- File: README.md ---\n@@ -10,8 +10,6 @@ This repo shows examples of applications built on top of [Llama Stack](https://g\n   - zero-shot: the model can learn to call tools using previously unseen, in-context tool definitions\n - providing system level safety protections using models like Llama Guard.\n \n-> [!NOTE]\n-> The Llama Stack API is still evolving and may change. Feel free to build and experiment, but please don't rely on its stability just yet!\n \n \n An agentic app requires a few components:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 21091406,
+      "username": "varunfb",
+      "url": "https://github.com/varunfb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21091406?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "52a88e58dab74f63ad3bcd7df77c77e741370e5b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/52a88e58dab74f63ad3bcd7df77c77e741370e5b",
+              "message": "Point llama models to right HF orgnization (#13)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6548660,
+      "username": "vladimirivic",
+      "url": "https://github.com/vladimirivic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6548660?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "3dd225226b174156b21b45e1ea5829e764dda57c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3dd225226b174156b21b45e1ea5829e764dda57c",
+              "message": "Fix default model for agent store app",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5740295,
+      "username": "WuhanMonkey",
+      "url": "https://github.com/WuhanMonkey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5740295?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [
+            {
+              "url": "https://github.com/meta-llama/llama-stack-apps/issues/158",
+              "title": "The Llama Android example doesn't generate tokens when trying to run local inference."
+            }
+          ],
+          "commits": [
+            {
+              "sha": "ee7ae4d1a5da0df8a43a4cd9ac0535bdd1aad50b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ee7ae4d1a5da0df8a43a4cd9ac0535bdd1aad50b",
+              "message": "Update README.md for LocalInf setup (#164)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a116f981ba10e2be10c28de4501954763da0496f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a116f981ba10e2be10c28de4501954763da0496f",
+              "message": "Android App updated to support Kotlin SDK v0.1.0 (#159)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "237b0218dc2122282a688030631527b95fdae0a1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/237b0218dc2122282a688030631527b95fdae0a1",
+              "message": "[Android] Add demo app using Kotlin SDK v0.0.54 (#134)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17387054,
+      "username": "wukaixingxp",
+      "url": "https://github.com/wukaixingxp",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17387054?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "994d8b47c53d6627f1b42d37a2d90d5cd505b54c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/994d8b47c53d6627f1b42d37a2d90d5cd505b54c",
+              "message": "Make DocQA a one-clickable app implementation (#151)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19946372,
+      "username": "yanxi0830",
+      "url": "https://github.com/yanxi0830",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19946372?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "592a101c155082125d8f1170cf4824860a0fd921",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/592a101c155082125d8f1170cf4824860a0fd921",
+              "message": "update rag as attachment script (#209)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c52943f2a8020bf70cf98b6dcf4aa38845249b9c",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c52943f2a8020bf70cf98b6dcf4aa38845249b9c",
+              "message": "chore: update react example (#204)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "7119ea1d4064ab774f10bb6c0f292bc517cb49b7",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7119ea1d4064ab774f10bb6c0f292bc517cb49b7",
+              "message": "fix: remove single message & update client tool script to use tool decorator (#167)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "37c410076693de046a0d04e3ceda194c1d7e7bba",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/37c410076693de046a0d04e3ceda194c1d7e7bba",
+              "message": "feat: ReACT agent example (#166)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "5e242f95be1e0393f13f7421599458127a63e839",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/5e242f95be1e0393f13f7421599458127a63e839",
+              "message": "clean up examples/ scripts (#143)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8bc950b5783151f3d834bf6c0a2ffeee41968f7f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8bc950b5783151f3d834bf6c0a2ffeee41968f7f",
+              "message": "fix inference examples (#141)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "393976205f1648b538e700efa7fe90c3cb58f867",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/393976205f1648b538e700efa7fe90c3cb58f867",
+              "message": "delete (#129)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "f2bb4a11132b051a590f545cef1b51a925b99ee5",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/f2bb4a11132b051a590f545cef1b51a925b99ee5",
+              "message": "[Proof of Concept] Evaluations UI with Streamlit (#127)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8178592c466422857ca8be329d00203433f3fec5",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8178592c466422857ca8be329d00203433f3fec5",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e337775481e3270c136faf250f74f9952e3b318f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e337775481e3270c136faf250f74f9952e3b318f",
+              "message": "fix readme links",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e50cc99d5ac9052eae8c1b8faa88844e634d571a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e50cc99d5ac9052eae8c1b8faa88844e634d571a",
+              "message": "fix broken link",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "cc96fa359ba0edc08b77ac2b1c0ed60356f13b29",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/cc96fa359ba0edc08b77ac2b1c0ed60356f13b29",
+              "message": "examples readme",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "004a8c111b7d771338307eac56a7d7ab04ae48cf",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/004a8c111b7d771338307eac56a7d7ab04ae48cf",
+              "message": "Evals flow for AgentStore app (#124)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a4a0c59108c92ff9ce420e8a702976ffd1f1fba4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a4a0c59108c92ff9ce420e8a702976ffd1f1fba4",
+              "message": "precommit",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "615d19cd8d2b8d031319dbfb4b5d26941bac4382",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/615d19cd8d2b8d031319dbfb4b5d26941bac4382",
+              "message": "fix safety/memory client (#125)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "7e1ce050f848afdef5bbdcfaa428e9e605ebccc7",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/7e1ce050f848afdef5bbdcfaa428e9e605ebccc7",
+              "message": "migration to use sync call agents (#123)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "46ca8c8df99b55045210bb21291502052000a6ce",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/46ca8c8df99b55045210bb21291502052000a6ce",
+              "message": "cleanup SearchAndBrowse tool",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c67febf6eb39ac42dd195c8c691b2f6a792d858a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c67febf6eb39ac42dd195c8c691b2f6a792d858a",
+              "message": "fix vision model / safety & gradio apps for 0.0.53rc (#121)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6a3f47f494185187d8b6654427af0c2467ab650f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6a3f47f494185187d8b6654427af0c2467ab650f",
+              "message": "error checking models (#120)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "e125ea3d908601bdd440052674022296bcc9c96d",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/e125ea3d908601bdd440052674022296bcc9c96d",
+              "message": "Update apps to work with 0.0.53rc (#119)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0dc9c42fb42bf21d35e6d231afc4e0360a9eac61",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0dc9c42fb42bf21d35e6d231afc4e0360a9eac61",
+              "message": "Bump version to 0.0.50",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "08dabcc34aa5d5fbdae80f88a6bd87e5f5f45476",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/08dabcc34aa5d5fbdae80f88a6bd87e5f5f45476",
+              "message": "Bump version to 0.0.48",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8d49303577ab389c75a020cc2d21d896df03e025",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8d49303577ab389c75a020cc2d21d896df03e025",
+              "message": "Use Agent in SDK, remove common lib, revamp app unit test (#106)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "13f4e83e134855f723b0a1998cb24df5c496fa3a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/13f4e83e134855f723b0a1998cb24df5c496fa3a",
+              "message": "[Evals API] eval client demo scripts (#103)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "1e7edca5f9546ec1af59caa399d52de994d11700",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/1e7edca5f9546ec1af59caa399d52de994d11700",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "20d17f9a4fd12f6a153a10a1aec47471e15fd424",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/20d17f9a4fd12f6a153a10a1aec47471e15fd424",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "6f2704f895bb6cdbfaf940bb409f8d57fd3a3f07",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/6f2704f895bb6cdbfaf940bb409f8d57fd3a3f07",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "2f2f529ca344ba4a7f681294fb601c157c03cc5e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2f2f529ca344ba4a7f681294fb601c157c03cc5e",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "8e1cb2eec158574eacbdfddc520f075e9182da1e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8e1cb2eec158574eacbdfddc520f075e9182da1e",
+              "message": "agent_store fix",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "afe981ba712aa6d06476861fdd39d7eb133c5e8a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/afe981ba712aa6d06476861fdd39d7eb133c5e8a",
+              "message": "Bump version to 0.0.43",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "df1f34ef27482e4a72a2ab442b46197fb769e7c0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/df1f34ef27482e4a72a2ab442b46197fb769e7c0",
+              "message": "bugfix",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0a0c4a34375d2c8272b1afd1243af808949802f0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0a0c4a34375d2c8272b1afd1243af808949802f0",
+              "message": "bugfix",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "136414790a38a3943c788000525fdd05bf3c32c2",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/136414790a38a3943c788000525fdd05bf3c32c2",
+              "message": "use providers list for getting provider_id",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "241c69a1f873dd22254eb071f8f5ca2c51ba7934",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/241c69a1f873dd22254eb071f8f5ca2c51ba7934",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "36b04bf3cfb79cbc4383cf6609332da34a6b48c0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/36b04bf3cfb79cbc4383cf6609332da34a6b48c0",
+              "message": "llama_guard only for safety",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b9c073cb882b30461a3f6a87f55c07e817e2596d",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b9c073cb882b30461a3f6a87f55c07e817e2596d",
+              "message": "Bump version to 0.0.42",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3b5f935b4cd69944aa5bfa2812b910e79da88b34",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3b5f935b4cd69944aa5bfa2812b910e79da88b34",
+              "message": "fix interoir design (#91)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "be8f5323bbe5e25e2bd9f2cd290e8d14637b647f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/be8f5323bbe5e25e2bd9f2cd290e8d14637b647f",
+              "message": "[APP] adapt to server updates #201 (#90)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "1b672492cc7932e2ff33d87d6fa7f82614fb49d9",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/1b672492cc7932e2ff33d87d6fa7f82614fb49d9",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c2dbfe53314072c55bea7f22380cb83fba776347",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c2dbfe53314072c55bea7f22380cb83fba776347",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "4d60fe15033fc087a9f457ab67ca06a196e9ec53",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4d60fe15033fc087a9f457ab67ca06a196e9ec53",
+              "message": "fix requirements",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a0e168d6972425f6481d849a977b52b809ad396a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a0e168d6972425f6481d849a977b52b809ad396a",
+              "message": "add llama-stack-client dependency",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "84e7a6d39f10efcdbee63a0772c43ef8564c7c27",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/84e7a6d39f10efcdbee63a0772c43ef8564c7c27",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0acf25cdea59b3d0b582f066ba8d1a333e07d443",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0acf25cdea59b3d0b582f066ba8d1a333e07d443",
+              "message": "llama_stack -> llama_stack_client",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ceeffceface6d0ba50ea49148437ac09870b5c71",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ceeffceface6d0ba50ea49148437ac09870b5c71",
+              "message": "[API Updates] migrate to llama-stack-client SDK, remove llama-stack dependency (#80)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "1d3dfea9eab1538e8ebeffaad813743e03b6eda4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/1d3dfea9eab1538e8ebeffaad813743e03b6eda4",
+              "message": "[API Updates 3]api_updates_3 SDK fix (#79)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "23eefa217324a2ddcb8889e97e5f515a9afdc0a0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/23eefa217324a2ddcb8889e97e5f515a9afdc0a0",
+              "message": "update prompt msg",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "0c5c93a149fca403f2115de1511f599474283b80",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/0c5c93a149fca403f2115de1511f599474283b80",
+              "message": "update file upload for memory client sdk",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "3f60e6fd4c86067815251488080f3baf25ea8b95",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/3f60e6fd4c86067815251488080f3baf25ea8b95",
+              "message": "memory client sdk example",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "68189f05904b63e2390ffced522d7edcfb6626b4",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/68189f05904b63e2390ffced522d7edcfb6626b4",
+              "message": "fix requirements",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "45ac1dd9d4295fe8825334fe13af4e329e5244bf",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/45ac1dd9d4295fe8825334fe13af4e329e5244bf",
+              "message": "bump client sdk version, agentic_system -> agents sdk example rename",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "a299f1f5a7315dc6767382266a76247cc8b17a24",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/a299f1f5a7315dc6767382266a76247cc8b17a24",
+              "message": "fix client sdk example, update requirements",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "837c64b14d975d278ee16b09f1c87dbc4176c9ae",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/837c64b14d975d278ee16b09f1c87dbc4176c9ae",
+              "message": "Bump version to 0.0.19",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "2c7acd13c12ecf403816b24bd529a78d80717cf8",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/2c7acd13c12ecf403816b24bd529a78d80717cf8",
+              "message": "update requirements with llama-stack-client",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "4cc34093f7f9675ec0c891953f01f257567e7d9b",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4cc34093f7f9675ec0c891953f01f257567e7d9b",
+              "message": "Update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "4d441215005da229eb70a16bc4e9ae89420112d2",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4d441215005da229eb70a16bc4e9ae89420112d2",
+              "message": "Bump version to 0.0.17",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "380c0d818a59ba54c085ccedd02a71788a3773f1",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/380c0d818a59ba54c085ccedd02a71788a3773f1",
+              "message": "update README.md",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "beb3e6bf2b3e522c38f34b10a59e55cfb095294f",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/beb3e6bf2b3e522c38f34b10a59e55cfb095294f",
+              "message": "Update SDK examples (#74)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "540bc4257ba9e9f1ca3527b24870ffb95d1e3e79",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/540bc4257ba9e9f1ca3527b24870ffb95d1e3e79",
+              "message": "update README",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "ffcc03cc988b0ed8396dfa416dcdfa368d64687a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/ffcc03cc988b0ed8396dfa416dcdfa368d64687a",
+              "message": "Bump version to 0.0.14",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "125549c6f5897a0bcd41d3753c27cd74636dae3d",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/125549c6f5897a0bcd41d3753c27cd74636dae3d",
+              "message": "fix inference.client w/ new sdk",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "94959e263c4b548d8668397d1ecfdcc41c8d946a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/94959e263c4b548d8668397d1ecfdcc41c8d946a",
+              "message": "Update client scripts with updated SDK (#69)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "c50936cc9bdadb22e709679cbe2b921504fa0f9a",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/c50936cc9bdadb22e709679cbe2b921504fa0f9a",
+              "message": "add CODEOWNERS file",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "4c47f1a863ac5cc44b3df47c67c722b76e0d595e",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/4c47f1a863ac5cc44b3df47c67c722b76e0d595e",
+              "message": "add script for running Safety example via SDK (#68)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "cec8685227edb2e4c1e9ae2604f070a4710960dc",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/cec8685227edb2e4c1e9ae2604f070a4710960dc",
+              "message": "udpate requirements with llama-stack sdk (#67)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            },
+            {
+              "sha": "b83158a32ed81e105d3978543467cb907ca8aba0",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/b83158a32ed81e105d3978543467cb907ca8aba0",
+              "message": "add SDK example client scripts (#66)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 68322456,
+      "username": "Yuan-ManX",
+      "url": "https://github.com/Yuan-ManX",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68322456?v=4",
+      "works": [
+        {
+          "repository_url": "https://github.com/meta-llama/llama-stack-apps",
+          "issues": [],
+          "commits": [
+            {
+              "sha": "8ea36f9016bf0881bf81231993c6760230044ab9",
+              "url": "https://github.com/meta-llama/llama-stack-apps/commit/8ea36f9016bf0881bf81231993c6760230044ab9",
+              "message": "Update README.md (#12)",
+              "files_changed": null,
+              "comment_count": null,
+              "diff_patch": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

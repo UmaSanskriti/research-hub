@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Star Trek LCARS Theme - Custom Properties */
+:root {
+  --starfleet-blue: #00d9ff;
+  --starfleet-orange: #ff9966;
+  --starfleet-magenta: #ff00ff;
+  --starfleet-green: #00ff41;
+  --starfleet-amber: #ffaa00;
+  --starfleet-purple: #cc66ff;
+  --space-black: #0a0e27;
+  --space-dark: #1a1f3a;
+  --space-medium: #2a2f4a;
+  --space-light: #3a3f5a;
+  --terminal-green: #00ff41;
+  --alert-red: #ff3366;
+}
+
+/* Custom Fonts */
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--space-black);
+  color: #e0e7ff;
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-mono-tech {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Scanline Effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scanline-effect::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(transparent, var(--starfleet-blue), transparent);
+  opacity: 0.3;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Glowing Text Effect */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--starfleet-blue), 0 0 10px var(--starfleet-blue), 0 0 15px var(--starfleet-blue);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--starfleet-blue), 0 0 20px var(--starfleet-blue), 0 0 30px var(--starfleet-blue);
+  }
+}
+
+.text-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.text-glow-static {
+  text-shadow: 0 0 5px var(--starfleet-blue), 0 0 10px var(--starfleet-blue);
+}
+
+/* LCARS Corner Styles */
+.lcars-corner-tl {
+  border-top-left-radius: 40px;
+}
+
+.lcars-corner-tr {
+  border-top-right-radius: 40px;
+}
+
+.lcars-corner-bl {
+  border-bottom-left-radius: 40px;
+}
+
+.lcars-corner-br {
+  border-bottom-right-radius: 40px;
+}
+
+.lcars-pill {
+  border-radius: 50px;
+}
+
+/* Pulse Effect */
+@keyframes pulse-lcars {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--starfleet-blue);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 20px var(--starfleet-blue);
+  }
+}
+
+.animate-pulse-lcars {
+  animation: pulse-lcars 2s ease-in-out infinite;
+}
+
+/* Terminal Cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background: var(--terminal-green);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* Data Stream Effect */
+@keyframes data-stream {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.data-stream {
+  background: linear-gradient(45deg,
+    transparent 40%,
+    var(--starfleet-blue) 50%,
+    transparent 60%);
+  background-size: 200% 200%;
+  animation: data-stream 3s linear infinite;
+}
+
+/* Grid Background */
+.grid-background {
+  background-image:
+    linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Hologram Effect */
+@keyframes hologram {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.hologram {
+  animation: hologram 3s ease-in-out infinite;
+  background: linear-gradient(transparent 50%, rgba(0, 217, 255, 0.05) 50%);
+  background-size: 100% 4px;
+}
+
+/* Button Hover Effects */
+.lcars-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.lcars-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.lcars-button:hover::before {
+  left: 100%;
+}
+
+/* Panel Borders */
+.lcars-panel {
+  border: 2px solid var(--starfleet-blue);
+  box-shadow:
+    0 0 10px rgba(0, 217, 255, 0.3),
+    inset 0 0 10px rgba(0, 217, 255, 0.1);
+}
+
+/* Status Indicators */
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+.status-active {
+  animation: status-pulse 1.5s ease-in-out infinite;
+}
+
+/* Tactical Display */
+.tactical-display {
+  background: radial-gradient(circle at center,
+    rgba(0, 217, 255, 0.1) 0%,
+    transparent 70%);
+}
+
+/* Screen Flicker */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.98; }
+}
+
+.screen-flicker {
+  animation: flicker 0.15s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--space-dark);
+  border-left: 1px solid var(--starfleet-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--starfleet-blue);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--starfleet-orange);
+}
+
+/* Alert Animation */
+@keyframes alert-flash {
+  0%, 100% {
+    background-color: transparent;
+    border-color: var(--alert-red);
+  }
+  50% {
+    background-color: rgba(255, 51, 102, 0.2);
+    border-color: var(--starfleet-amber);
+  }
+}
+
+.alert-flash {
+  animation: alert-flash 1s ease-in-out infinite;
+}

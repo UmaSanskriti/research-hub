@@ -1,0 +1,53 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+# Replace 'venv' with your actual environment directory name(s) if different
+/venv/
+/.venv/
+/env/
+/ENV/
+/env.bak/
+/venv.bak/
+
+# Django SQLite database file (common for local dev)
+# Be careful if you ever intend to commit a specific version
+*.sqlite3-journal
+
+# Environment variables
+# Ignore all .env files, committed .env.example is recommended
+.env*
+!.env.example
+
+# Log files
+*.log
+*.log.*
+
+# Coverage reports
+.coverage
+.coverage.*
+/htmlcov/
+nosetests.xml
+coverage.xml
+
+# Python specific temp files / distribution files
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+MANIFEST
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*~
