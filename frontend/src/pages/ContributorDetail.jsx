@@ -102,9 +102,9 @@ useEffect(() => {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="rounded-full bg-slate-200 h-16 w-16 mb-4"></div>
-          <div className="h-4 bg-slate-200 rounded w-48 mb-2"></div>
-          <div className="h-3 bg-slate-200 rounded w-64"></div>
+          <div className="rounded-full bg-[#2a2f4a] h-16 w-16 mb-4 border-2 border-[#00d9ff]"></div>
+          <div className="h-4 bg-[#2a2f4a] rounded w-48 mb-2"></div>
+          <div className="h-3 bg-[#2a2f4a] rounded w-64"></div>
         </div>
       </div>
     );
@@ -112,11 +112,11 @@ useEffect(() => {
 
   if (error) {
     return (
-      <div className="rounded-lg bg-gray-50 p-6 text-center">
-        <div className="h-12 w-12 text-gray-500 mx-auto mb-4">⚠️</div>
-        <h3 className="text-lg font-medium text-gray-800">Error loading contributor data</h3>
-        <p className="mt-2 text-gray-600">{error}</p>
-        <Link to="/contributors" className="inline-flex items-center mt-4 text-sm font-medium text-gray-600 hover:text-indigo-600">
+      <div className="rounded-lg bg-[#1a1f3a] border-2 border-[#ff3366] p-6 text-center">
+        <div className="h-12 w-12 text-[#ff3366] mx-auto mb-4">⚠️</div>
+        <h3 className="text-lg font-medium text-[#00d9ff] font-display">Error loading contributor data</h3>
+        <p className="mt-2 text-[#e0e7ff] font-mono-tech">{error}</p>
+        <Link to="/contributors" className="inline-flex items-center mt-4 text-sm font-medium text-[#00d9ff] hover:text-[#ff9966] font-mono-tech">
           <ArrowLeftIcon className="mr-1 h-4 w-4" />
           Return to Contributors
         </Link>
@@ -129,11 +129,11 @@ useEffect(() => {
 
   if (!contributor) {
     return (
-      <div className="text-center py-10 bg-gray-50 rounded-lg">
-        <UserCircleIcon className="h-16 w-16 text-gray-400 mx-auto mb-2" />
-        <h2 className="text-xl font-medium text-gray-900">Contributor Not Found</h2>
-        <p className="mt-1 text-gray-500">The contributor you're looking for doesn't exist or was removed.</p>
-        <Link to="/contributors" className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+      <div className="text-center py-10 bg-[#1a1f3a] border-2 border-[#00d9ff] rounded-lg">
+        <UserCircleIcon className="h-16 w-16 text-[#00d9ff] mx-auto mb-2" />
+        <h2 className="text-xl font-medium text-[#00d9ff] font-display">Contributor Not Found</h2>
+        <p className="mt-1 text-[#e0e7ff] font-mono-tech">The contributor you're looking for doesn't exist or was removed.</p>
+        <Link to="/contributors" className="mt-6 inline-flex items-center px-4 py-2 border-2 border-[#00d9ff] text-sm font-medium rounded-md shadow-sm text-[#00d9ff] bg-[#1a1f3a] hover:bg-[#2a2f4a] hover:shadow-[0_0_15px_rgba(0,217,255,0.4)] transition-all font-mono-tech">
           <ArrowLeftIcon className="mr-2 h-4 w-4" aria-hidden="true" />
           Back to Contributors
         </Link>
@@ -162,57 +162,57 @@ useEffect(() => {
       {/* Header Section */}
       <div className="mb-8 flex flex-col md:flex-row md:items-start md:justify-between">
         <div className="flex items-start">
-          <img 
-            src={contributor.avatar_url} 
-            alt={contributor.username} 
-            className="h-16 w-16 rounded-full ring-1 ring-gray-200 shadow-sm object-cover mr-5" 
+          <img
+            src={contributor.avatar_url}
+            alt={contributor.username}
+            className="h-16 w-16 rounded-full ring-2 ring-[#00d9ff] shadow-lg object-cover mr-5"
           />
           <div>
             <div className="flex items-center flex-wrap">
-              <h1 className="text-2xl font-bold text-gray-900 mr-3">{contributor.username}</h1>
-              <a 
-                href={contributor.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+              <h1 className="text-2xl font-bold text-[#00d9ff] mr-3 font-display">{contributor.username}</h1>
+              <a
+                href={contributor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm text-[#ff9966] hover:text-[#00d9ff] transition-colors font-mono-tech"
               >
                 <LinkIcon className="h-3.5 w-3.5 mr-1" />
                 <span>GitHub</span>
                 <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-0.5" />
               </a>
             </div>
-            
+
             <div className="mt-2 flex flex-wrap gap-2">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#00d9ff]/20 text-[#00d9ff] border border-[#00d9ff]/30 font-mono-tech">
                 <CodeBracketIcon className="mr-1 h-3.5 w-3.5" />
                 {totalCommits} Commits
               </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#00ff41]/20 text-[#00ff41] border border-[#00ff41]/30 font-mono-tech">
                 <CheckCircleIcon className="mr-1 h-3.5 w-3.5" />
-                {totalIssues} Resolved Issues
+                {totalIssues} Issues
               </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#ff9966]/20 text-[#ff9966] border border-[#ff9966]/30 font-mono-tech">
                 <FolderIcon className="mr-1 h-3.5 w-3.5" />
                 {totalRepositories} Repositories
               </span>
             </div>
           </div>
         </div>
-        
-        <div className="mt-4 md:mt-0 text-sm text-gray-500">
+
+        <div className="mt-4 md:mt-0 text-sm text-[#ff9966] font-mono-tech">
           Last updated: {formatDate(contributor.updated_at)}
         </div>
       </div>
 
-      {/* Main Summary - First-Class Citizen */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center">
-          <DocumentTextIcon className="h-5 w-5 text-gray-500 mr-2" />
-          <h2 className="text-lg font-medium text-gray-900">Contributor Summary</h2>
+      {/* Main Summary */}
+      <div className="bg-[#1a1f3a] rounded-lg shadow-lg border-2 border-[#00d9ff] mb-8 overflow-hidden">
+        <div className="px-6 py-4 border-b-2 border-[#00d9ff] flex items-center bg-[#0a0e27]">
+          <DocumentTextIcon className="h-5 w-5 text-[#00d9ff] mr-2" />
+          <h2 className="text-lg font-medium text-[#00d9ff] font-display">Contributor Summary</h2>
         </div>
         <div className="px-6 py-5">
-          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-gray-700 prose-a:underline hover:prose-a:text-indigo-600">
-            <ReactMarkdown>{contributor.summary}</ReactMarkdown>
+          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-[#00d9ff] prose-p:text-[#e0e7ff] prose-a:text-[#ff9966] prose-a:underline hover:prose-a:text-[#00d9ff] font-mono-tech">
+            <ReactMarkdown>{contributor.summary || 'No summary available yet. Summaries are being generated...'}</ReactMarkdown>
           </div>
         </div>
       </div>
@@ -221,8 +221,8 @@ useEffect(() => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         {/* Repository Activity - Left Side (wider) */}
         <div className="lg:col-span-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-            <FolderIcon className="h-5 w-5 text-indigo-500 mr-2" />
+          <h2 className="text-xl font-semibold text-[#00d9ff] mb-4 flex items-center font-display">
+            <FolderIcon className="h-5 w-5 text-[#00d9ff] mr-2" />
             Repository Contributions
           </h2>
           
@@ -238,24 +238,24 @@ useEffect(() => {
                 const showCommits = expandedSections[commitsKey];
                 
                 return (
-                  <div key={work.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                  <div key={work.id} className="bg-[#1a1f3a] rounded-lg shadow-sm border-2 border-[#00d9ff] overflow-hidden">
                     {/* Work Header */}
-                    <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                      <h3 className="font-medium text-gray-900">
-                        <Link 
-                          to={`/repositories/${work.repository}`} 
-                          className="text-gray-900 hover:text-indigo-600 flex items-center"
+                    <div className="px-6 py-4 border-b-2 border-[#00d9ff] flex justify-between items-center bg-[#0a0e27]">
+                      <h3 className="font-medium text-[#00d9ff] font-display">
+                        <Link
+                          to={`/repositories/${work.repository}`}
+                          className="text-[#00d9ff] hover:text-[#ff9966] flex items-center transition-colors"
                         >
-                          <FolderIcon className="h-4 w-4 mr-1.5 text-indigo-500" />
+                          <FolderIcon className="h-4 w-4 mr-1.5 text-[#00d9ff]" />
                           {repoName}
                         </Link>
                       </h3>
                     </div>
-                    
+
                     {/* Work Summary */}
                     <div className="px-6 py-4">
-                      <div className="prose prose-sm max-w-none text-gray-700">
-                        <ReactMarkdown>{work.summary}</ReactMarkdown>
+                      <div className="prose prose-sm max-w-none text-[#e0e7ff] font-mono-tech">
+                        <ReactMarkdown>{work.summary || 'Summary being generated...'}</ReactMarkdown>
                       </div>
                     </div>
                     
@@ -263,18 +263,18 @@ useEffect(() => {
                     <div>
                       {/* Issues Section */}
                       {work.issues && work.issues.length > 0 && (
-                        <div className="border-t border-gray-100">
-                          <button 
+                        <div className="border-t-2 border-[#00d9ff]/30">
+                          <button
                             onClick={() => toggleSection(work.repository, 'issues')}
-                            className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
+                            className="flex justify-between items-center w-full text-left px-6 py-3 hover:bg-[#2a2f4a] transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
-                              <CheckCircleIcon className="h-4 w-4 mr-2 text-green-600" />
+                            <span className="flex items-center text-sm font-medium text-[#00ff41] font-mono-tech">
+                              <CheckCircleIcon className="h-4 w-4 mr-2 text-[#00ff41]" />
                               {work.issues.length} Resolved Issue{work.issues.length !== 1 ? 's' : ''}
                             </span>
-                            {showIssues 
-                              ? <ChevronUpIcon className="h-4 w-4 text-gray-400" />
-                              : <ChevronDownIcon className="h-4 w-4 text-gray-400" />
+                            {showIssues
+                              ? <ChevronUpIcon className="h-4 w-4 text-[#00d9ff]" />
+                              : <ChevronDownIcon className="h-4 w-4 text-[#00d9ff]" />
                             }
                           </button>
                           
@@ -311,18 +311,18 @@ useEffect(() => {
                       
                       {/* Commits Section */}
                       {work.commits && work.commits.length > 0 && (
-                        <div className="border-t border-gray-100">
-                          <button 
+                        <div className="border-t-2 border-[#00d9ff]/30">
+                          <button
                             onClick={() => toggleSection(work.repository, 'commits')}
-                            className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
+                            className="flex justify-between items-center w-full text-left px-6 py-3 hover:bg-[#2a2f4a] transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
-                              <CodeBracketIcon className="h-4 w-4 mr-2 text-indigo-600" />
+                            <span className="flex items-center text-sm font-medium text-[#00d9ff] font-mono-tech">
+                              <CodeBracketIcon className="h-4 w-4 mr-2 text-[#00d9ff]" />
                               {work.commits.length} Commit{work.commits.length !== 1 ? 's' : ''}
                             </span>
-                            {showCommits 
-                              ? <ChevronUpIcon className="h-4 w-4 text-gray-400" />
-                              : <ChevronDownIcon className="h-4 w-4 text-gray-400" />
+                            {showCommits
+                              ? <ChevronUpIcon className="h-4 w-4 text-[#00d9ff]" />
+                              : <ChevronDownIcon className="h-4 w-4 text-[#00d9ff]" />
                             }
                           </button>
                           
@@ -371,25 +371,25 @@ useEffect(() => {
         {/* Activity Overview - Right Side (narrower) */}
         <div className="lg:col-span-4">
           {/* Repository Overview Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-6">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Active Repositories</h3>
+          <div className="bg-[#1a1f3a] rounded-lg shadow-lg border-2 border-[#00d9ff] overflow-hidden mb-6">
+            <div className="px-5 py-4 border-b-2 border-[#00d9ff] bg-[#0a0e27]">
+              <h3 className="text-sm font-medium text-[#00d9ff] font-display">Active Repositories</h3>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-[#00d9ff]/20">
               {filteredRepositories.map(repo => (
-                <Link 
+                <Link
                   key={repo.id}
                   to={`/repositories/${repo.id}`}
-                  className="flex items-center px-5 py-3 hover:bg-gray-50 transition-colors"
+                  className="flex items-center px-5 py-3 hover:bg-[#2a2f4a] transition-colors group"
                 >
-                  <FolderIcon className="h-4 w-4 mr-2 text-indigo-500" />
-                  <span className="text-sm text-gray-700 hover:text-indigo-600 transition-colors">
+                  <FolderIcon className="h-4 w-4 mr-2 text-[#00d9ff]" />
+                  <span className="text-sm text-[#e0e7ff] group-hover:text-[#00d9ff] transition-colors font-mono-tech">
                     {repo.name}
                   </span>
                 </Link>
               ))}
               {filteredRepositories.length === 0 && (
-                <div className="px-5 py-4 text-sm text-gray-500 text-center">
+                <div className="px-5 py-4 text-sm text-[#ff9966] text-center font-mono-tech">
                   No repositories found
                 </div>
               )}
@@ -397,9 +397,9 @@ useEffect(() => {
           </div>
           
           {/* Activity Timeline Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Recent Activity</h3>
+          <div className="bg-[#1a1f3a] rounded-lg shadow-lg border-2 border-[#00d9ff] overflow-hidden">
+            <div className="px-5 py-4 border-b-2 border-[#00d9ff] bg-[#0a0e27]">
+              <h3 className="text-sm font-medium text-[#00d9ff] font-display">Recent Activity</h3>
             </div>
             <div className="px-5 py-4">
               {/* Show timeline of most recent activities based on dates */}
@@ -461,17 +461,17 @@ useEffect(() => {
       </div>
       
       {/* Visualization Section - At the end */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-lg font-medium text-gray-900">Repository Connections</h2>
-          <p className="mt-1 text-sm text-gray-500">
+      <div className="bg-[#1a1f3a] rounded-lg shadow-lg border-2 border-[#00d9ff] overflow-hidden mb-8">
+        <div className="px-6 py-4 border-b-2 border-[#00d9ff] bg-[#0a0e27]">
+          <h2 className="text-lg font-medium text-[#00d9ff] font-display">Repository Connections</h2>
+          <p className="mt-1 text-sm text-[#ff9966] font-mono-tech">
             Visual representation of {contributor.username}'s contributions across repositories
           </p>
         </div>
         <div className="p-2">
-          <OrganizationGraph 
-            repositories={filteredRepositories} 
-            contributors={filteredContributors} 
+          <OrganizationGraph
+            repositories={filteredRepositories}
+            contributors={filteredContributors}
           />
         </div>
       </div>
