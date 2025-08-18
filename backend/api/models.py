@@ -20,6 +20,23 @@ class Paper(models.Model):
     avatar_url = models.URLField(blank=True, null=True, help_text="Journal/publisher logo")
     summary = models.TextField(blank=True, null=True, default="", help_text="AI-generated summary of the paper")
     semantic_scholar_id = models.CharField(max_length=255, blank=True, null=True, unique=True, db_index=True, help_text="Semantic Scholar paper ID")
+    openalex_id = models.CharField(max_length=255, blank=True, null=True, db_index=True, help_text="OpenAlex work ID")
+
+    # Import tracking
+    import_status = models.CharField(
+        max_length=20,
+        choices=[
+            ('pending', 'Pending'),
+            ('success', 'Success'),
+            ('failed', 'Failed'),
+        ],
+        default='pending',
+        help_text="Status of paper enrichment import"
+    )
+    import_failure_reason = models.TextField(blank=True, null=True, help_text="Reason for import failure")
+    import_attempted_at = models.DateTimeField(blank=True, null=True, help_text="When enrichment was last attempted")
+    data_source = models.CharField(max_length=50, blank=True, null=True, help_text="Primary data source (semantic_scholar, openalex, crossref)")
+
     raw_data = models.JSONField(blank=True, null=True, help_text="Raw API response data")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

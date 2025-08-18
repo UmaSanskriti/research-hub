@@ -221,6 +221,14 @@ class Command(BaseCommand):
     def _process_authors(self, paper: Paper, authors_data: list, service: SemanticScholarService, stats: dict):
         """Process and create/update authors and authorships for a paper."""
 
+        # CRITICAL VALIDATION: If >10 authors, only process first author to prevent fake researchers
+        if len(authors_data) > 10:
+            logger.warning(
+                f"Paper has {len(authors_data)} authors. Only processing first author to prevent fake researchers.\n"
+                f"  Paper: {paper.title[:60]}"
+            )
+            authors_data = authors_data[:1]  # Only keep first author
+
         for idx, author_data in enumerate(authors_data):
             author_id = author_data.get('authorId')
             author_name = author_data.get('name', '').strip()

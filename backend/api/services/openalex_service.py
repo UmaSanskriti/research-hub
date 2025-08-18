@@ -22,6 +22,159 @@ class OpenAlexService:
         """Initialize OpenAlex service"""
         logger.info("OpenAlex service initialized")
 
+    # ========== Paper/Work Methods ==========
+
+    def get_work_by_doi(self, doi: str) -> Optional[Dict[str, Any]]:
+        """
+        Fetch complete work data from OpenAlex by DOI.
+
+        Args:
+            doi: Digital Object Identifier
+
+        Returns:
+            Normalized paper data or None if not found
+        """
+        try:
+            logger.info(f"Fetching work from OpenAlex for DOI: {doi}")
+
+            # Clean DOI
+            doi = doi.strip()
+            if not doi.startswith('http'):
+                doi = f"https://doi.org/{doi}"
+
+            # Fetch work
+            work = Works()[doi]
+
+            if work:
+                logger.info(f"Found work in OpenAlex: {work.get('title', '')[:50]}")
+                return self._normalize_work(work)
+
+            return None
+
+        except Exception as e:
+            logger.warning(f"Error fetching OpenAlex work by DOI '{doi}': {str(e)}")
+            return None
+
+    def search_work_by_title(self, title: str, limit: int = 5) -> Optional[Dict[str, Any]]:
+        """
+        Search for works by title and return the best match.
+
+        Args:
+            title: Paper title
+            limit: Max results to consider
+
+        Returns:
+            Normalized paper data or None if not found
+        """
+        try:
+            logger.info(f"Searching OpenAlex by title: {title[:50]}...")
+
+            # Search for work by title
+            results = Works().search(title).get(per_page=limit)
+
+            if results and len(results) > 0:
+                # Check title similarity for the first result
+                best_match = results[0]
+                found_title = best_match.get('title', '').lower()
+                search_title = title.lower()
+
+                # Use same matching logic
+                if self._titles_match(search_title, found_title):
+                    logger.info(f"Found matching work in OpenAlex")
+                    return self._normalize_work(best_match)
+                else:
+                    logger.info(f"Title mismatch - skipping OpenAlex result")
+
+            return None
+
+        except Exception as e:
+            logger.warning(f"Error searching OpenAlex by title: {str(e)}")
+            return None
+
+    def _normalize_work(self, work: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Normalize OpenAlex work data to our internal format.
+
+        Args:
+            work: Raw work data from OpenAlex
+
+        Returns:
+            Normalized paper data compatible with our Paper model
+        """
+        try:
+            # Extract DOI
+            doi = work.get('doi', '').replace('https://doi.org/', '')
+
+            # Extract title
+            title = work.get('title', '')
+
+            # Extract and reconstruct abstract
+            abstract = ''
+            if work.get('abstract_inverted_index'):
+                abstract = self._reconstruct_abstract(work['abstract_inverted_index'])
+
+            # Extract authors
+            authors = []
+            authorships = work.get('authorships', [])
+            for authorship in authorships:
+                author = authorship.get('author', {})
+                if author:
+                    name = author.get('display_name', '')
+                    if name:
+                        authors.append({
+                            'name': name,
+                            'openalex_id': author.get('id', '').replace('https://openalex.org/', ''),
+                            'orcid': author.get('orcid', '').replace('https://orcid.org/', '') if author.get('orcid') else None,
+                            'position': authorship.get('author_position', ''),
+                            'institutions': [inst.get('display_name') for inst in authorship.get('institutions', [])]
+                        })
+
+            # Extract publication date
+            publication_date = work.get('publication_date')
+
+            # Extract venue/journal
+            venue = ''
+            primary_location = work.get('primary_location', {})
+            if primary_location:
+                source = primary_location.get('source', {})
+                if source:
+                    venue = source.get('display_name', '')
+
+            # Extract citation count
+            citation_count = work.get('cited_by_count', 0)
+
+            # Extract concepts/keywords
+            keywords = []
+            for concept in work.get('concepts', [])[:10]:  # Top 10 concepts
+                keywords.append(concept.get('display_name', ''))
+
+            # Extract URL
+            url = work.get('doi', '') if work.get('doi') else primary_location.get('landing_page_url', '')
+
+            # OpenAlex ID
+            openalex_id = work.get('id', '').replace('https://openalex.org/', '')
+
+            return {
+                'openalex_id': openalex_id,
+                'doi': doi,
+                'title': title,
+                'abstract': abstract,
+                'authors': authors,
+                'publication_date': publication_date,
+                'venue': venue,
+                'citation_count': citation_count,
+                'keywords': keywords,
+                'url': url,
+                'type': work.get('type', ''),
+                'open_access': work.get('open_access', {}).get('is_oa', False),
+                'source': 'openalex',
+                'raw_data': work
+            }
+
+        except Exception as e:
+            logger.error(f"Error normalizing OpenAlex work: {str(e)}")
+            return {}
+
     def get_abstract_by_doi(self, doi: str) -> Optional[str]:
         """
         Fetch abstract from OpenAlex by DOI.

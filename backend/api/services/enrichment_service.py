@@ -173,6 +173,27 @@ class PaperEnrichmentService:
 
     def _process_authors(self, paper: Paper, authors_data: List[Dict], results: Dict):
         """Process authors and create researcher profiles and authorships."""
+
+        # CRITICAL VALIDATION: Prevent fake researcher creation from papers with many authors
+        author_count = len(authors_data)
+
+        # Reject papers with >50 authors entirely
+        if author_count > 50:
+            logger.error(
+                f"Paper has {author_count} authors (>50 threshold). Rejecting to prevent fake researchers.\n"
+                f"  Paper: {paper.title[:60]}"
+            )
+            results['errors'].append(f"Too many authors ({author_count}), rejected")
+            return
+
+        # If 10-50 authors, only process first author
+        if author_count > 10:
+            logger.warning(
+                f"Paper has {author_count} authors. Only processing first author to prevent fake researchers.\n"
+                f"  Paper: {paper.title[:60]}"
+            )
+            authors_data = authors_data[:1]  # Only keep first author
+
         for idx, author_data in enumerate(authors_data):
             author_id = author_data.get('authorId')
             author_name = author_data.get('name', '').strip()
