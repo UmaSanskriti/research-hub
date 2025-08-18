@@ -1,6 +1,7 @@
 """
 Researcher Enrichment Service - Comprehensive enrichment for researcher profiles
-Fetches data from Semantic Scholar, extracts research interests, generates AI summaries
+Fetches data from Semantic Scholar, ORCID, and OpenAlex APIs
+Intelligently merges data from multiple sources for complete researcher profiles
 """
 import logging
 import os
@@ -13,6 +14,8 @@ from django.utils import timezone
 
 from api.models import Researcher, Paper, ExternalPublication
 from api.services.semantic_scholar_service import SemanticScholarService
+from api.services.orcid_service import ORCIDService
+from api.services.openalex_service import OpenAlexService
 
 logger = logging.getLogger(__name__)
 
@@ -22,20 +25,29 @@ class ResearcherEnrichmentService:
     Service for enriching researcher profiles with comprehensive academic data.
 
     Features:
-    - Fetch detailed author data from Semantic Scholar
-    - Extract research interests from publications
-    - Generate AI-powered summaries using Claude
-    - Fetch complete publication lists
+    - Fetch data from multiple sources: Semantic Scholar, ORCID, OpenAlex
+    - Intelligently merge data from all sources
+    - Extract research interests and concepts
+    - Generate AI-powered summaries using any available provider
+    - Fetch and cache complete publication lists
+    - Calculate data quality scores
     - Support both manual and automatic enrichment
     """
 
     def __init__(self):
         self.semantic_scholar = SemanticScholarService()
+        self.orcid = ORCIDService()
+        self.openalex = OpenAlexService()
 
     @transaction.atomic
     def enrich_researcher(self, researcher: Researcher, force: bool = False) -> Dict[str, any]:
         """
-        Enrich a researcher profile with comprehensive data.
+        Enrich a researcher profile with comprehensive data from multiple sources.
+
+        Fetches data from:
+        1. Semantic Scholar (papers, metrics, affiliations, aliases)
+        2. ORCID (verified profile, employment history, funding)
+        3. OpenAlex (comprehensive metrics, concepts, affiliation history)
 
         Args:
             researcher: Researcher instance to enrich
@@ -50,67 +62,88 @@ class ResearcherEnrichmentService:
             'researcher_name': researcher.name,
             'enriched': False,
             'fields_updated': [],
-            'research_interests_count': 0,
+            'sources_used': [],
+            'data_quality_score': 0.0,
             'errors': []
         }
 
-        # Skip if already enriched (unless force=True)
-        if not force and researcher.semantic_scholar_id and researcher.research_interests:
-            logger.info(f"Researcher already enriched (S2 ID: {researcher.semantic_scholar_id}), skipping")
-            results['success'] = True
-            results['enriched'] = False
-            return results
-
-        try:
-            # Step 1: Fetch or search for author data
-            author_data = self._fetch_author_data(researcher)
-
-            if not author_data:
-                logger.warning(f"Could not find author data for researcher: {researcher.name}")
-                results['errors'].append("Not found in Semantic Scholar")
+        # Skip if recently enriched (unless force=True)
+        if not force and researcher.last_enriched:
+            time_since_enrichment = timezone.now() - researcher.last_enriched
+            if time_since_enrichment < timedelta(days=30):
+                logger.info(f"Researcher enriched {time_since_enrichment.days} days ago, skipping")
+                results['success'] = True
+                results['enriched'] = False
                 return results
 
-            # Step 2: Update basic metadata
-            updated_fields = self._update_researcher_metadata(researcher, author_data)
+        try:
+            logger.info(f"Starting comprehensive enrichment for: {researcher.name}")
+
+            # Step 1: Fetch data from all available sources
+            all_data = self._fetch_all_sources(researcher)
+
+            if not any(all_data.values()):
+                logger.warning(f"No data found from any source for: {researcher.name}")
+                results['errors'].append("Not found in any data source")
+                return results
+
+            # Track which sources provided data
+            results['sources_used'] = [k for k, v in all_data.items() if v is not None]
+            logger.info(f"Data fetched from: {', '.join(results['sources_used'])}")
+
+            # Step 2: Merge and update researcher metadata from all sources
+            updated_fields = self._merge_all_data(researcher, all_data)
             results['fields_updated'].extend(updated_fields)
 
-            # Step 3: Fetch and extract research interests
-            interests = self._extract_research_interests(author_data)
+            # Step 3: Extract research interests and concepts
+            interests = self._extract_comprehensive_interests(all_data)
             if interests:
                 researcher.research_interests = interests
-                results['research_interests_count'] = len(interests)
                 results['fields_updated'].append('research_interests')
 
-            # Step 4: Generate AI summary
-            summary = self._generate_ai_summary(researcher, author_data, interests)
+            # Step 4: Calculate data quality score
+            quality_score = self._calculate_data_quality_score(researcher)
+            researcher.data_quality_score = quality_score
+            results['data_quality_score'] = quality_score
+            results['fields_updated'].append('data_quality_score')
+
+            # Step 5: Generate AI summary with comprehensive data
+            summary = self._generate_ai_summary(researcher, all_data, interests)
             if summary:
                 researcher.summary = summary
                 results['fields_updated'].append('summary')
 
-            # Step 5: Update avatar
+            # Step 6: Update avatar
             if not researcher.avatar_url or 'ui-avatars.com' in researcher.avatar_url:
                 researcher.avatar_url = f"https://ui-avatars.com/api/?name={researcher.name.replace(' ', '+')}&background=635BFF&color=fff&size=200"
                 results['fields_updated'].append('avatar_url')
 
+            # Step 7: Update enrichment timestamp and sources
+            researcher.last_enriched = timezone.now()
+            researcher.data_sources = results['sources_used']
+            results['fields_updated'].extend(['last_enriched', 'data_sources'])
+
             # Save the researcher
             researcher.save()
 
-            # Step 6: Fetch and store external publications
-            try:
-                papers_in_collection, external_papers = self.get_researcher_publications(
-                    researcher,
-                    force_refresh=True
-                )
-                results['publications_stored'] = len(external_papers)
-                logger.info(f"Stored {len(external_papers)} external publications for {researcher.name}")
-            except Exception as pub_error:
-                logger.warning(f"Could not fetch publications for {researcher.name}: {str(pub_error)}")
-                results['errors'].append(f"Publications fetch error: {str(pub_error)}")
+            # Step 8: Fetch and store external publications (Semantic Scholar)
+            if all_data.get('semantic_scholar'):
+                try:
+                    papers_in_collection, external_papers = self.get_researcher_publications(
+                        researcher,
+                        force_refresh=True
+                    )
+                    results['publications_stored'] = len(external_papers)
+                    logger.info(f"Stored {len(external_papers)} external publications")
+                except Exception as pub_error:
+                    logger.warning(f"Could not fetch publications: {str(pub_error)}")
+                    results['errors'].append(f"Publications fetch error: {str(pub_error)}")
 
             results['success'] = True
             results['enriched'] = True
 
-            logger.info(f"Successfully enriched researcher: {researcher.name}")
+            logger.info(f"Successfully enriched {researcher.name} - Quality: {quality_score:.1f}%, "
+                       f"Sources: {len(results['sources_used'])}, Fields: {len(results['fields_updated'])}")
 
         except Exception as e:
             logger.error(f"Error enriching researcher '{researcher.name}': {str(e)}")
@@ -119,146 +152,371 @@ class ResearcherEnrichmentService:
 
         return results
 
-    def _fetch_author_data(self, researcher: Researcher) -> Optional[Dict]:
-        """Fetch author data from Semantic Scholar."""
-        # Try by Semantic Scholar ID first
+    def _fetch_all_sources(self, researcher: Researcher) -> Dict[str, Optional[Dict]]:
+        """
+        Fetch data from all available sources.
+
+        Returns dict with keys: 'semantic_scholar', 'orcid', 'openalex'
+        Each value is the data dict from that source, or None if not available.
+        """
+        all_data = {
+            'semantic_scholar': None,
+            'orcid': None,
+            'openalex': None
+        }
+
+        # 1. Fetch from Semantic Scholar
         if researcher.semantic_scholar_id:
-            author_data = self.semantic_scholar.get_author_details(researcher.semantic_scholar_id)
-            if author_data:
-                return author_data
+            try:
+                logger.info(f"Fetching from Semantic Scholar: {researcher.semantic_scholar_id}")
+                s2_data = self.semantic_scholar.get_author_details(researcher.semantic_scholar_id)
+                if s2_data:
+                    all_data['semantic_scholar'] = s2_data
+                    logger.info("✓ Semantic Scholar data retrieved")
+            except Exception as e:
+                logger.warning(f"Semantic Scholar fetch failed: {str(e)}")
 
-        # Search by name as fallback
-        # Note: Semantic Scholar doesn't have a direct author search, so we'll need to
-        # use the paper search and extract author info if needed
-        logger.warning(f"No Semantic Scholar ID for researcher: {researcher.name}. Manual ID required.")
-        return None
+        # 2. Fetch from ORCID
+        if researcher.orcid_id:
+            try:
+                logger.info(f"Fetching from ORCID: {researcher.orcid_id}")
+                orcid_data = self.orcid.enrich_researcher_with_orcid(researcher.orcid_id)
+                if orcid_data:
+                    all_data['orcid'] = orcid_data
+                    logger.info("✓ ORCID data retrieved")
+            except Exception as e:
+                logger.warning(f"ORCID fetch failed: {str(e)}")
 
-    def _update_researcher_metadata(self, researcher: Researcher, author_data: Dict) -> List[str]:
-        """Update researcher with metadata from Semantic Scholar."""
+        # 3. Fetch from OpenAlex
+        try:
+            # Try by ORCID first (most reliable)
+            if researcher.orcid_id:
+                logger.info(f"Fetching from OpenAlex by ORCID: {researcher.orcid_id}")
+                openalex_author = self.openalex.get_author_by_orcid(researcher.orcid_id)
+                if openalex_author:
+                    all_data['openalex'] = self.openalex.extract_author_data(openalex_author)
+                    logger.info("✓ OpenAlex data retrieved (via ORCID)")
+
+            # Try by OpenAlex ID if we have it
+            if not all_data['openalex'] and researcher.openalex_id:
+                logger.info(f"Fetching from OpenAlex by ID: {researcher.openalex_id}")
+                openalex_author = self.openalex.get_author_by_id(researcher.openalex_id)
+                if openalex_author:
+                    all_data['openalex'] = self.openalex.extract_author_data(openalex_author)
+                    logger.info("✓ OpenAlex data retrieved (via ID)")
+
+            # Try by name search as last resort
+            if not all_data['openalex']:
+                logger.info(f"Searching OpenAlex by name: {researcher.name}")
+                affiliation = researcher.affiliation or (
+                    all_data.get('orcid', {}).get('affiliation') if all_data.get('orcid') else None
+                )
+                search_results = self.openalex.search_author_by_name(
+                    researcher.name,
+                    affiliation=affiliation,
+                    limit=3
+                )
+                if search_results:
+                    # Use the top match
+                    top_match = search_results[0]
+                    openalex_author = self.openalex.get_author_by_id(top_match['openalex_id'])
+                    if openalex_author:
+                        all_data['openalex'] = self.openalex.extract_author_data(openalex_author)
+                        logger.info("✓ OpenAlex data retrieved (via name search)")
+
+        except Exception as e:
+            logger.warning(f"OpenAlex fetch failed: {str(e)}")
+
+        return all_data
+
+    def _merge_all_data(self, researcher: Researcher, all_data: Dict) -> List[str]:
+        """
+        Intelligently merge data from all sources into researcher profile.
+
+        Priority for conflicting data:
+        1. ORCID (most authoritative for identity/affiliation)
+        2. OpenAlex (comprehensive metrics and concepts)
+        3. Semantic Scholar (publication-focused data)
+        """
         updated_fields = []
+        s2_data = all_data.get('semantic_scholar') or {}
+        orcid_data = all_data.get('orcid') or {}
+        openalex_data = all_data.get('openalex') or {}
 
-        # Update Semantic Scholar ID
-        if author_data.get('author_id') and not researcher.semantic_scholar_id:
-            researcher.semantic_scholar_id = author_data.get('author_id')
+        # === External IDs ===
+        if s2_data.get('author_id') and not researcher.semantic_scholar_id:
+            researcher.semantic_scholar_id = s2_data['author_id']
             updated_fields.append('semantic_scholar_id')
 
-        # Update affiliation
-        if author_data.get('affiliation') and not researcher.affiliation:
-            researcher.affiliation = author_data.get('affiliation')
-            updated_fields.append('affiliation')
-
-        # Update h-index (always update if available)
-        if author_data.get('h_index') is not None:
-            researcher.h_index = author_data.get('h_index', 0)
-            updated_fields.append('h_index')
-
-        # Update ORCID
-        if author_data.get('orcid') and not researcher.orcid_id:
-            researcher.orcid_id = author_data.get('orcid')
+        if orcid_data.get('orcid_id') and not researcher.orcid_id:
+            researcher.orcid_id = orcid_data['orcid_id']
             updated_fields.append('orcid_id')
 
-        # Update URL
-        if author_data.get('homepage'):
-            researcher.url = author_data.get('homepage')
-            updated_fields.append('url')
-        elif author_data.get('author_id') and not researcher.url:
-            researcher.url = f"https://www.semanticscholar.org/author/{author_data.get('author_id')}"
-            updated_fields.append('url')
+        if openalex_data.get('openalex_id') and not researcher.openalex_id:
+            researcher.openalex_id = openalex_data['openalex_id']
+            updated_fields.append('openalex_id')
 
-        # Merge raw_data
-        if researcher.raw_data:
-            researcher.raw_data['semantic_scholar'] = author_data
-        else:
-            researcher.raw_data = {'semantic_scholar': author_data}
+        if openalex_data.get('scopus_id') and not researcher.scopus_id:
+            researcher.scopus_id = openalex_data['scopus_id']
+            updated_fields.append('scopus_id')
+
+        # === Name and Aliases ===
+        # Collect all name variants
+        aliases = set(researcher.aliases or [])
+        if orcid_data.get('aliases'):
+            aliases.update(orcid_data['aliases'])
+        if openalex_data.get('name') and openalex_data['name'] != researcher.name:
+            aliases.add(openalex_data['name'])
+
+        if aliases:
+            researcher.aliases = list(aliases)
+            updated_fields.append('aliases')
+
+        # === Affiliation (ORCID > OpenAlex > Semantic Scholar) ===
+        if not researcher.affiliation:
+            affiliation = (orcid_data.get('affiliation') or
+                          openalex_data.get('affiliation') or
+                          s2_data.get('affiliation'))
+            if affiliation:
+                researcher.affiliation = affiliation
+                updated_fields.append('affiliation')
+
+        # Current position (ORCID is authoritative)
+        if orcid_data.get('current_position') and not researcher.current_position:
+            researcher.current_position = orcid_data['current_position']
+            updated_fields.append('current_position')
+
+        # === Affiliation History ===
+        # Merge affiliation history from ORCID and OpenAlex
+        affiliation_history = []
+
+        if orcid_data.get('affiliation_history'):
+            affiliation_history.extend(orcid_data['affiliation_history'])
+
+        if openalex_data.get('affiliation_history'):
+            affiliation_history.extend(openalex_data['affiliation_history'])
+
+        if affiliation_history:
+            researcher.affiliation_history = affiliation_history
+            updated_fields.append('affiliation_history')
+
+        # === Metrics (prefer OpenAlex for most comprehensive) ===
+        # h-index: OpenAlex > Semantic Scholar
+        h_index = openalex_data.get('h_index') or s2_data.get('h_index')
+        if h_index is not None and h_index != researcher.h_index:
+            researcher.h_index = h_index
+            updated_fields.append('h_index')
+
+        # i10-index: OpenAlex
+        i10_index = openalex_data.get('i10_index')
+        if i10_index is not None and i10_index != researcher.i10_index:
+            researcher.i10_index = i10_index
+            updated_fields.append('i10_index')
+
+        # Paper count: max of all sources
+        paper_count = max(
+            openalex_data.get('paper_count', 0),
+            orcid_data.get('paper_count', 0),
+            s2_data.get('paper_count', 0)
+        )
+        if paper_count and paper_count != researcher.paper_count:
+            researcher.paper_count = paper_count
+            updated_fields.append('paper_count')
+
+        # Total citations: OpenAlex > Semantic Scholar
+        citations = openalex_data.get('total_citations') or s2_data.get('citation_count', 0)
+        if citations and citations != researcher.total_citations:
+            researcher.total_citations = citations
+            updated_fields.append('total_citations')
+
+        # === Research Concepts (OpenAlex) ===
+        if openalex_data.get('research_concepts'):
+            researcher.research_concepts = openalex_data['research_concepts']
+            updated_fields.append('research_concepts')
+
+            # Extract primary research area from top concept
+            if openalex_data['research_concepts'] and len(openalex_data['research_concepts']) > 0:
+                top_concept_dict = openalex_data['research_concepts'][0]
+                if top_concept_dict and isinstance(top_concept_dict, dict):
+                    top_concept = top_concept_dict.get('concept')
+                    if top_concept and not researcher.primary_research_area:
+                        researcher.primary_research_area = top_concept
+                        updated_fields.append('primary_research_area')
+
+        # === URLs ===
+        if not researcher.url:
+            url = (s2_data.get('homepage') or
+                   (f"https://www.semanticscholar.org/author/{s2_data['author_id']}" if s2_data.get('author_id') else None))
+            if url:
+                researcher.url = url
+                updated_fields.append('url')
+
+        # === Raw Data ===
+        raw_data = researcher.raw_data or {}
+        if s2_data:
+            raw_data['semantic_scholar'] = s2_data
+        if orcid_data:
+            raw_data['orcid'] = orcid_data.get('raw_orcid', orcid_data)
+        if openalex_data:
+            raw_data['openalex'] = openalex_data.get('raw_openalex', openalex_data)
+
+        researcher.raw_data = raw_data
         updated_fields.append('raw_data')
 
         return updated_fields
 
-    def _extract_research_interests(self, author_data: Dict) -> List[str]:
+    def _extract_comprehensive_interests(self, all_data: Dict) -> List[str]:
         """
-        Extract research interests from author's publications.
+        Extract research interests from all available sources.
 
-        Uses fields of study from the author's papers to determine research areas.
+        Priority:
+        1. ORCID keywords (self-reported by researcher)
+        2. OpenAlex research concepts (data-driven)
+        3. Extract from other sources
         """
-        # For now, return empty list - we'll fetch papers and extract interests
-        # in the get_researcher_publications method
-        # This is a placeholder that can be enhanced when we fetch paper details
+        interests = []
 
-        # If we have paper count, we can note it
-        paper_count = author_data.get('paper_count', 0)
-        logger.info(f"Author has {paper_count} papers. Research interests will be extracted from publications.")
+        try:
+            # 1. ORCID keywords (highest priority - self-reported)
+            orcid_data = all_data.get('orcid') or {}
+            if orcid_data.get('research_interests'):
+                interests.extend(orcid_data['research_interests'][:10])
 
-        return []
+            # 2. OpenAlex concepts (data-driven, very comprehensive)
+            openalex_data = all_data.get('openalex') or {}
+            if openalex_data.get('research_concepts'):
+                # Extract top concepts with safe access
+                for concept_dict in openalex_data['research_concepts'][:10]:
+                    if concept_dict and isinstance(concept_dict, dict):
+                        concept = concept_dict.get('concept')
+                        if concept:
+                            interests.append(concept)
+
+            # Remove duplicates while preserving order
+            seen = set()
+            unique_interests = []
+            for interest in interests:
+                if interest and interest.lower() not in seen:
+                    seen.add(interest.lower())
+                    unique_interests.append(interest)
+
+            return unique_interests[:15]  # Limit to top 15
+
+        except Exception as e:
+            logger.error(f"Error extracting research interests: {str(e)}")
+            return []
+
+    def _calculate_data_quality_score(self, researcher: Researcher) -> float:
+        """
+        Calculate data quality/completeness score (0-100).
+
+        Checks presence of key fields and data richness.
+        """
+        score = 0.0
+        max_score = 100.0
+
+        # Core fields (40 points)
+        if researcher.semantic_scholar_id:
+            score += 10
+        if researcher.orcid_id:
+            score += 15  # ORCID is very valuable
+        if researcher.openalex_id:
+            score += 10
+        if researcher.affiliation:
+            score += 5
+
+        # Metrics (20 points)
+        if researcher.h_index > 0:
+            score += 5
+        if researcher.paper_count > 0:
+            score += 5
+        if researcher.total_citations > 0:
+            score += 5
+        if researcher.i10_index > 0:
+            score += 5
+
+        # Research profile (20 points)
+        if researcher.research_interests:
+            score += 10
+        if researcher.research_concepts:
+            score += 5
+        if researcher.primary_research_area:
+            score += 5
+
+        # Profile content (10 points)
+        if researcher.summary:
+            score += 5
+        if researcher.url:
+            score += 5
+
+        # Affiliation history (10 points)
+        if researcher.affiliation_history:
+            score += 5
+        if researcher.current_position:
+            score += 5
+
+        return min(score, max_score)
 
     def _generate_ai_summary(
         self,
         researcher: Researcher,
-        author_data: Dict,
+        all_data: Dict,
         interests: List[str]
     ) -> str:
         """
-        Generate AI-powered summary for researcher using Claude API.
+        Generate AI-powered summary for researcher using any available AI provider.
 
-        Falls back to template-based summary if Claude API fails.
+        Automatically uses Azure OpenAI, Anthropic, or OpenAI based on configured credentials.
+        Falls back to template-based summary if no AI provider is available.
         """
         try:
-            # Check if Claude API is available
-            api_key = os.environ.get('ANTHROPIC_API_KEY')
-            if not api_key:
-                logger.warning("ANTHROPIC_API_KEY not found, using template summary")
-                return self._generate_template_summary(researcher, author_data, interests)
+            # Use the flexible AI service
+            from api.services.ai_service import get_ai_service
 
-            # Import here to avoid issues if anthropic package not available
-            from anthropic import Anthropic
+            ai_service = get_ai_service()
 
-            client = Anthropic(api_key=api_key)
+            if not ai_service.is_available():
+                logger.warning(f"No AI provider configured, using template summary")
+                return self._generate_template_summary(researcher, all_data, interests)
 
-            # Build prompt for Claude
-            affiliation = researcher.affiliation or author_data.get('affiliation', 'an academic institution')
-            h_index = researcher.h_index or author_data.get('h_index', 0)
-            paper_count = author_data.get('paper_count', 0)
-            interests_str = ', '.join(interests[:5]) if interests else 'various research areas'
+            # Collect data from all sources for rich summary
+            s2_data = all_data.get('semantic_scholar', {})
+            orcid_data = all_data.get('orcid', {})
+            openalex_data = all_data.get('openalex', {})
 
-            prompt = f"""Write a concise 2-3 sentence summary for researcher {researcher.name}.
+            affiliation = researcher.affiliation
+            h_index = researcher.h_index or 0
+            paper_count = researcher.paper_count or 0
 
-Details:
-- Affiliation: {affiliation}
-- h-index: {h_index}
-- Publications: {paper_count}
-- Research areas: {interests_str}
-
-The summary should:
-- Highlight their main research contributions and expertise
-- Be professional and factual
-- Start with their name
-- Be suitable for an academic profile
-
-Example format: "[Name] is a researcher at [institution] specializing in [areas]. Their work focuses on [key contributions], with [impact metric]. They have made significant contributions to [field]."""
-
-            response = client.messages.create(
-                model="claude-3-5-sonnet-20241022",
-                max_tokens=200,
-                messages=[{"role": "user", "content": prompt}]
+            summary = ai_service.generate_researcher_summary(
+                researcher_name=researcher.name,
+                affiliation=affiliation,
+                h_index=h_index,
+                paper_count=paper_count,
+                research_areas=interests
             )
 
-            summary = response.content[0].text.strip()
-            logger.info(f"Generated AI summary for {researcher.name}")
-            return summary
+            if summary:
+                logger.info(f"Generated AI summary using {ai_service.get_provider_name()}")
+                return summary
+            else:
+                logger.warning("AI generation returned None, using template")
+                return self._generate_template_summary(researcher, all_data, interests)
 
         except Exception as e:
             logger.error(f"Error generating AI summary: {str(e)}")
-            return self._generate_template_summary(researcher, author_data, interests)
+            return self._generate_template_summary(researcher, all_data, interests)
 
     def _generate_template_summary(
         self,
         researcher: Researcher,
-        author_data: Dict,
+        all_data: Dict,
         interests: List[str]
     ) -> str:
         """Generate fallback template-based summary."""
-        affiliation = researcher.affiliation or author_data.get('affiliation')
-        h_index = researcher.h_index or author_data.get('h_index', 0)
-        paper_count = author_data.get('paper_count', 0)
+        affiliation = researcher.affiliation
+        h_index = researcher.h_index or 0
+        paper_count = researcher.paper_count or 0
 
         parts = [f"{researcher.name} is a researcher"]
 

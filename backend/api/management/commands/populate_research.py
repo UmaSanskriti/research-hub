@@ -63,33 +63,16 @@ class Command(BaseCommand):
         version_count = 0
         review_count = 0
 
-        # --- 1. Create Researchers ---
+        # --- 1. SKIP Researcher Creation ---
+        # IMPORTANT: Researchers should ONLY be created via import_from_semantic_scholar
+        # This ensures we only have real researchers with validated, complete data from S2
         researchers_data = data.get('researchers', [])
-        self.stdout.write(f"Creating {len(researchers_data)} researchers...")
-
-        for researcher_data in researchers_data:
-            researcher_id = researcher_data.get('id')
-            name = researcher_data.get('name')
-
-            if not name:
-                continue
-
-            researcher = Researcher.objects.create(
-                name=name,
-                email=researcher_data.get('email', ''),
-                affiliation=researcher_data.get('affiliation', ''),
-                orcid_id=researcher_data.get('orcid_id'),
-                h_index=researcher_data.get('h_index', 0),
-                research_interests=researcher_data.get('research_interests', []),
-                url=researcher_data.get('url', ''),
-                avatar_url=researcher_data.get('avatar_url', ''),
-                summary=researcher_data.get('summary', ''),
-                raw_data=researcher_data
+        self.stdout.write(
+            self.style.WARNING(
+                f"Skipping {len(researchers_data)} researchers from JSON. "
+                "Researchers will be created via 'import_from_semantic_scholar' command."
             )
-            researcher_cache[researcher_id] = researcher
-            researcher_count += 1
-
-        self.stdout.write(self.style.SUCCESS(f"Created {researcher_count} researchers."))
+        )
 
         # --- 2. Create Papers ---
         papers_data = data.get('papers', [])
@@ -129,41 +112,16 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS(f"Created {paper_count} papers."))
 
-        # --- 3. Create Authorships ---
+        # --- 3. SKIP Authorship Creation ---
+        # IMPORTANT: Authorships will be created by import_from_semantic_scholar
+        # when it creates researchers from S2 data
         authorships_data = data.get('authorships', [])
-        self.stdout.write(f"Creating {len(authorships_data)} authorships...")
-
-        for authorship_data in authorships_data:
-            authorship_id = authorship_data.get('id')
-            paper_id = authorship_data.get('paper')
-            researcher_id = authorship_data.get('researcher')
-
-            paper = paper_cache.get(paper_id)
-            researcher = researcher_cache.get(researcher_id)
-
-            if not paper or not researcher:
-                self.stdout.write(
-                    self.style.WARNING(
-                        f"Skipping authorship {authorship_id}: Paper or Researcher not found"
-                    )
-                )
-                continue
-
-            # Use get_or_create to handle duplicate authorships
-            authorship, created = Authorship.objects.get_or_create(
-                paper=paper,
-                researcher=researcher,
-                defaults={
-                    'author_position': authorship_data.get('author_position', ''),
-                    'contribution_role': authorship_data.get('contribution_role', ''),
-                    'summary': authorship_data.get('summary', '')
-                }
+        self.stdout.write(
+            self.style.WARNING(
+                f"Skipping {len(authorships_data)} authorships from JSON. "
+                "Authorships will be created via 'import_from_semantic_scholar' command."
             )
-            authorship_cache[authorship_id] = authorship
-            if created:
-                authorship_count += 1
-
-        self.stdout.write(self.style.SUCCESS(f"Created {authorship_count} authorships."))
+        )
 
         # --- 4. Create Versions ---
         versions_data = data.get('versions', [])

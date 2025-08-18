@@ -11,9 +11,9 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/solid';
 
-const ClaudeChat = () => {
+const ClaudeChat = ({ compact = false }) => {
   const [prompt, setPrompt] = useState('');
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(compact); // Always expanded in compact mode
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingResponse, setStreamingResponse] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -29,14 +29,14 @@ const ClaudeChat = () => {
 
   const handleInputFocus = () => {
     setIsFocused(true);
-    if (!isExpanded && !isStreaming) {
+    if (!isExpanded && !isStreaming && !compact) {
       setIsExpanded(true);
     }
   };
 
   const handleInputBlur = () => {
     setIsFocused(false);
-    if (isExpanded && !isStreaming && !streamingResponse) {
+    if (isExpanded && !isStreaming && !streamingResponse && !compact) {
       setIsExpanded(false);
     }
   };
@@ -137,6 +137,106 @@ const ClaudeChat = () => {
     }
   };
 
+  // Compact inline mode for ChatPanel
+  if (compact) {
+    return (
+      <div className="flex flex-col h-full">
+        {/* Messages Area */}
+        <div className="flex-1 overflow-y-auto px-4 py-4" ref={responseRef}>
+          {!streamingResponse && !isStreaming && !error && (
+            <div className="text-xs text-gray-600 space-y-3">
+              <p className="font-medium text-gray-900">Quick prompts:</p>
+              {[
+                "Who studies machine learning?",
+                "What papers discuss transformers?",
+                "Who are the experts on quantum computing?",
+                "Which researchers collaborate frequently?"
+              ].map((template, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleTemplateClick(template)}
+                  className="block w-full text-left px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded text-xs text-gray-700 transition-colors"
+                >
+                  {template}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {(streamingResponse || isStreaming) && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
+                <ChatBubbleLeftEllipsisIcon className="h-4 w-4 text-gray-600" />
+                <span className="text-xs font-medium text-gray-900">Assistant</span>
+                {isStreaming && (
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse ml-auto"></div>
+                )}
+              </div>
+
+              <div className="text-xs text-gray-700 leading-relaxed">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
+                  {streamingResponse}
+                </ReactMarkdown>
+                {isStreaming && (
+                  <span className="inline-block w-1.5 h-3 bg-gray-900 ml-1 animate-pulse"></span>
+                )}
+              </div>
+
+              {!isStreaming && streamingResponse && (
+                <button
+                  onClick={resetChat}
+                  className="mt-3 px-3 py-1.5 bg-gray-900 hover:bg-gray-700 text-white text-xs font-medium rounded transition-colors"
+                >
+                  New Query
+                </button>
+              )}
+            </div>
+          )}
+
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded p-3">
+              <p className="text-xs font-medium text-red-900 mb-1">Error</p>
+              <p className="text-xs text-red-700 mb-2">{error}</p>
+              <button
+                onClick={resetChat}
+                className="px-3 py-1 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Input Area */}
+        <div className="flex-shrink-0 border-t border-gray-100 p-3 bg-white">
+          <form onSubmit={handleSubmit} className="flex items-center gap-2">
+            <input
+              ref={inputRef}
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Ask about research..."
+              className="flex-1 px-3 py-2 text-xs border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-900"
+              disabled={isStreaming}
+            />
+            <button
+              type="submit"
+              disabled={!prompt.trim() || isStreaming}
+              className={`p-2 rounded ${
+                prompt.trim() && !isStreaming
+                  ? 'bg-gray-900 hover:bg-gray-700'
+                  : 'bg-gray-200 cursor-not-allowed'
+              } transition-colors`}
+            >
+              <PaperAirplaneIcon className="h-3 w-3 text-white" />
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Floating mode (original)
   return (
     <div className="fixed bottom-6 left-4 right-4 lg:left-[19rem] z-40 pointer-events-none">
       <div className="max-w-3xl mx-auto">

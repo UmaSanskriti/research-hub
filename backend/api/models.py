@@ -48,15 +48,53 @@ class Researcher(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     email = models.EmailField(blank=True, null=True)
-    affiliation = models.CharField(max_length=255, blank=True, null=True, help_text="University or institution")
-    orcid_id = models.CharField(max_length=19, blank=True, null=True, unique=True, help_text="ORCID identifier")
-    h_index = models.IntegerField(default=0, help_text="h-index metric")
-    research_interests = models.JSONField(default=list, blank=True, help_text="List of research interests/topics")
-    url = models.URLField(help_text="Link to researcher profile (Google Scholar, personal page, etc.)")
-    avatar_url = models.URLField(blank=True, null=True)
-    summary = models.TextField(help_text="AI-generated summary of researcher's work")
+
+    # Primary affiliation (current)
+    affiliation = models.CharField(max_length=255, blank=True, null=True, help_text="Current university or institution")
+    current_position = models.CharField(max_length=255, blank=True, null=True, help_text="Current job title")
+
+    # Affiliation history (from ORCID, OpenAlex)
+    affiliations = models.JSONField(default=list, blank=True, help_text="Full list of affiliations: [{name, years, ror_id}]")
+    affiliation_history = models.JSONField(default=list, blank=True, help_text="Career history: [{institution, role, start_year, end_year, ror_id}]")
+
+    # Name variants
+    aliases = models.JSONField(default=list, blank=True, help_text="Alternative name spellings")
+
+    # External IDs
+    orcid_id = models.CharField(max_length=19, blank=True, null=True, unique=True, db_index=True, help_text="ORCID identifier")
     semantic_scholar_id = models.CharField(max_length=255, blank=True, null=True, unique=True, db_index=True, help_text="Semantic Scholar author ID")
-    raw_data = models.JSONField(blank=True, null=True, help_text="Raw API response data")
+    openalex_id = models.CharField(max_length=255, blank=True, null=True, db_index=True, help_text="OpenAlex author ID")
+    dblp_pid = models.CharField(max_length=50, blank=True, null=True, help_text="DBLP person ID")
+    scopus_id = models.CharField(max_length=255, blank=True, null=True, help_text="Scopus author ID")
+    github_username = models.CharField(max_length=100, blank=True, null=True, help_text="GitHub username")
+
+    # Metrics
+    h_index = models.IntegerField(default=0, help_text="h-index metric")
+    i10_index = models.IntegerField(default=0, help_text="i10-index (papers with 10+ citations)")
+    paper_count = models.IntegerField(default=0, help_text="Total number of publications")
+    total_citations = models.IntegerField(default=0, help_text="Total citation count")
+
+    # Research areas
+    research_interests = models.JSONField(default=list, blank=True, help_text="List of research interests/topics")
+    research_concepts = models.JSONField(default=list, blank=True, help_text="Research concepts with scores: [{concept, score, level}]")
+    primary_research_area = models.CharField(max_length=100, blank=True, null=True, help_text="Main research field")
+
+    # Profile content
+    url = models.URLField(blank=True, null=True, help_text="Link to researcher profile (Google Scholar, personal page, etc.)")
+    avatar_url = models.URLField(blank=True, null=True)
+    summary = models.TextField(blank=True, null=True, help_text="AI-generated summary of researcher's work")
+    research_statement = models.TextField(blank=True, null=True, help_text="Research statement or bio")
+
+    # Data quality and provenance
+    last_enriched = models.DateTimeField(blank=True, null=True, help_text="When this profile was last enriched")
+    data_sources = models.JSONField(default=list, blank=True, help_text="List of data sources used: ['semantic_scholar', 'orcid', ...]")
+    data_quality_score = models.FloatField(default=0.0, help_text="Completeness score (0-100)")
+    verified = models.BooleanField(default=False, help_text="Whether profile has been verified")
+
+    # Raw API responses
+    raw_data = models.JSONField(blank=True, null=True, help_text="Raw API response data from all sources")
+
+    # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -65,6 +103,9 @@ class Researcher(models.Model):
         indexes = [
             models.Index(fields=['name']),
             models.Index(fields=['-h_index']),
+            models.Index(fields=['-total_citations']),
+            models.Index(fields=['-paper_count']),
+            models.Index(fields=['last_enriched']),
         ]
 
     def __str__(self):

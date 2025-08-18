@@ -126,6 +126,29 @@ class Command(BaseCommand):
             logger.warning(f"Could not find paper in Semantic Scholar: {paper.title[:50]}")
             return False
 
+        # VALIDATION: Check if titles match to prevent wrong paper imports
+        s2_title = s2_paper.get('title', '').lower()
+        our_title = paper.title.lower()
+
+        if not self._titles_match(our_title, s2_title):
+            logger.error(
+                f"Title mismatch detected! Skipping paper to prevent fake researcher creation.\n"
+                f"  Our title: {paper.title[:80]}\n"
+                f"  S2 title:  {s2_paper.get('title', '')[:80]}"
+            )
+            stats['errors'].append(f"{paper.title[:50]}: Title mismatch with S2")
+            return False
+
+        # VALIDATION: Check for unrealistic author counts (prevents mass fake researcher creation)
+        author_count = len(s2_paper.get('authors', []))
+        if author_count > 50:
+            logger.warning(
+                f"Paper has {author_count} authors (> 50 threshold). Skipping to prevent fake researchers.\n"
+                f"  Paper: {paper.title[:80]}"
+            )
+            stats['errors'].append(f"{paper.title[:50]}: Too many authors ({author_count})")
+            return False
+
         # Update paper with enriched data
         paper.semantic_scholar_id = s2_paper.get('paper_id')
 
@@ -286,3 +309,36 @@ class Command(BaseCommand):
 
             if created:
                 stats['authorships_created'] += 1
+
+    def _titles_match(self, title1: str, title2: str, threshold: float = 0.5) -> bool:
+        """
+        Check if two titles are similar enough to be the same paper.
+        Uses Jaccard similarity on significant words.
+
+        Args:
+            title1: First title (lowercase)
+            title2: Second title (lowercase)
+            threshold: Minimum similarity score (0-1)
+
+        Returns:
+            True if titles match well enough
+        """
+        # Remove common punctuation and split into words
+        words1 = set(title1.replace(':', '').replace(',', '').replace('.', '').replace('*', '').split())
+        words2 = set(title2.replace(':', '').replace(',', '').replace('.', '').replace('*', '').split())
+
+        # Remove common stop words that don't help matching
+        stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'from'}
+        words1 = words1 - stop_words
+        words2 = words2 - stop_words
+
+        if not words1 or not words2:
+            return False
+
+        # Calculate Jaccard similarity
+        intersection = len(words1 & words2)
+        union = len(words1 | words2)
+
+        similarity = intersection / union if union > 0 else 0
+
+        return similarity >= threshold

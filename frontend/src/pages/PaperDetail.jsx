@@ -10,6 +10,7 @@ import {
   ChevronUpIcon,
   CalendarIcon,
   AcademicCapIcon,
+  LinkIcon,
 } from '@heroicons/react/24/outline';
 import {
   ArrowTopRightOnSquareIcon,
@@ -45,9 +46,9 @@ export default function PaperDetail() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="h-8 bg-gray-200 rounded w-96 mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-64 mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-80"></div>
+          <div className="h-6 bg-gray-200 rounded w-96 mb-3"></div>
+          <div className="h-3 bg-gray-200 rounded w-64 mb-2"></div>
+          <div className="h-3 bg-gray-200 rounded w-80"></div>
         </div>
       </div>
     );
@@ -55,12 +56,12 @@ export default function PaperDetail() {
 
   if (error) {
     return (
-      <div className="rounded-lg bg-red-50 border border-red-200 p-6 text-center">
-        <div className="h-12 w-12 text-red-600 mx-auto mb-4">⚠️</div>
-        <h3 className="text-lg font-medium text-gray-900">Error loading paper data</h3>
-        <p className="mt-2 text-gray-600">{error}</p>
-        <Link to="/papers" className="inline-flex items-center mt-4 text-sm font-medium text-primary hover:text-accent">
-          <ArrowLeftIcon className="mr-1 h-4 w-4" />
+      <div className="rounded border border-red-200 bg-red-50 p-4 text-center">
+        <div className="text-2xl mb-2">⚠️</div>
+        <h3 className="text-sm font-medium text-gray-900">Error loading paper data</h3>
+        <p className="mt-1 text-xs text-gray-600">{error}</p>
+        <Link to="/papers" className="inline-flex items-center mt-3 text-xs font-medium text-gray-900 hover:text-gray-700">
+          <ArrowLeftIcon className="mr-1 h-3 w-3" />
           Return to Papers
         </Link>
       </div>
@@ -72,12 +73,12 @@ export default function PaperDetail() {
 
   if (!paper) {
     return (
-      <div className="text-center py-10 card">
-        <DocumentTextIcon className="h-16 w-16 text-gray-400 mx-auto mb-2" />
-        <h2 className="text-xl font-medium text-gray-900">Paper Not Found</h2>
-        <p className="mt-1 text-gray-600">The paper you're looking for doesn't exist or was removed.</p>
-        <Link to="/papers" className="mt-6 inline-flex items-center btn btn-primary">
-          <ArrowLeftIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+      <div className="text-center py-8 bg-white border border-gray-200 rounded">
+        <DocumentTextIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+        <h2 className="text-sm font-medium text-gray-900">Paper Not Found</h2>
+        <p className="mt-1 text-xs text-gray-600">The paper you're looking for doesn't exist or was removed.</p>
+        <Link to="/papers" className="mt-4 inline-flex items-center text-xs font-medium text-gray-900 hover:text-gray-700">
+          <ArrowLeftIcon className="mr-1 h-3 w-3" />
           Back to Papers
         </Link>
       </div>
@@ -101,75 +102,80 @@ export default function PaperDetail() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Header Section */}
-      <div className="mb-8">
-        <div className="mb-4">
-          <Link to="/papers" className="inline-flex items-center text-sm text-gray-600 hover:text-primary transition-colors mb-4">
-            <ArrowLeftIcon className="mr-1 h-4 w-4" />
-            Back to Papers
-          </Link>
-        </div>
+      {/* Compact Header */}
+      <div className="mb-4">
+        <Link to="/papers" className="inline-flex items-center text-xs text-gray-600 hover:text-gray-900 transition-colors mb-3">
+          <ArrowLeftIcon className="mr-1 h-3 w-3" />
+          Back to Papers
+        </Link>
 
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4 font-content">
-            {paper.title}
-          </h1>
+        <div className="bg-white border border-gray-200 rounded-md p-4">
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <h1 className="text-base font-semibold text-gray-900 mb-2">
+                {paper.title}
+              </h1>
 
-          <div className="flex flex-wrap gap-3 mb-4 font-ui">
-            {paper.doi && (
-              <a
-                href={`https://doi.org/${paper.doi}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-primary text-white hover:bg-accent transition-colors"
-              >
-                DOI: {paper.doi}
-                <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 ml-1.5" />
-              </a>
-            )}
-            <a
-              href={paper.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-            >
-              View Paper
-              <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 ml-1.5" />
-            </a>
-          </div>
+              {/* Inline Metrics */}
+              <div className="flex flex-wrap items-center gap-3 text-xs text-gray-600 mb-3">
+                <div className="flex items-center gap-1">
+                  <CalendarIcon className="h-3 w-3" />
+                  <span>{formatDate(paper.publication_date)}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <AcademicCapIcon className="h-3 w-3" />
+                  <span>{paper.journal || 'N/A'}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <DocumentTextIcon className="h-3 w-3" />
+                  <span>{paper.citation_count || 0} citations</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <UserGroupIcon className="h-3 w-3" />
+                  <span>{paperAuthors.length} authors</span>
+                </div>
+              </div>
 
-          <div className="flex flex-wrap gap-2 font-ui">
-            <span className="badge badge-primary">
-              <AcademicCapIcon className="mr-1 h-3.5 w-3.5" />
-              {paper.journal || 'Journal N/A'}
-            </span>
-            <span className="badge badge-success">
-              <CalendarIcon className="mr-1 h-3.5 w-3.5" />
-              Published {formatDate(paper.publication_date)}
-            </span>
-            <span className="badge badge-warning">
-              <AcademicCapIcon className="mr-1 h-3.5 w-3.5" />
-              {paper.citation_count || 0} Citation{paper.citation_count !== 1 ? 's' : ''}
-            </span>
-            <span className="badge badge-primary">
-              <UserGroupIcon className="mr-1 h-3.5 w-3.5" />
-              {paperAuthors.length} Author{paperAuthors.length !== 1 ? 's' : ''}
-            </span>
+              {/* Links */}
+              <div className="flex flex-wrap gap-2">
+                {paper.doi && (
+                  <a
+                    href={`https://doi.org/${paper.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+                  >
+                    <LinkIcon className="h-3 w-3 mr-1" />
+                    DOI
+                    <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1" />
+                  </a>
+                )}
+                <a
+                  href={paper.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                >
+                  View Paper
+                  <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-        {/* Left Column - Abstract and Summary */}
-        <div className="lg:col-span-8">
+      {/* 2-Column Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {/* Main Content - 2/3 */}
+        <div className="lg:col-span-2 space-y-4">
           {/* Abstract */}
-          <div className="card mb-6">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900 font-display">Abstract</h2>
+          <div className="bg-white border border-gray-200 rounded-md">
+            <div className="px-4 py-2 border-b border-gray-100">
+              <h2 className="text-xs font-semibold text-gray-900">Abstract</h2>
             </div>
-            <div className="px-6 py-5">
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line font-content">
+            <div className="px-4 py-3">
+              <p className="text-xs text-gray-700 leading-relaxed whitespace-pre-line">
                 {paper.abstract || 'No abstract available.'}
               </p>
             </div>
@@ -177,69 +183,61 @@ export default function PaperDetail() {
 
           {/* AI Summary */}
           {paper.summary && (
-            <div className="card mb-6">
-              <div className="px-6 py-4 border-b border-gray-200">
-                <h2 className="text-lg font-semibold text-gray-900 font-display">Summary</h2>
+            <div className="bg-white border border-gray-200 rounded-md">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <h2 className="text-xs font-semibold text-gray-900">Summary</h2>
               </div>
-              <div className="px-6 py-5">
-                <div className="prose max-w-none text-gray-700">
+              <div className="px-4 py-3">
+                <div className="prose prose-sm max-w-none text-xs text-gray-700">
                   <ReactMarkdown>{paper.summary}</ReactMarkdown>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Authors Section */}
-          <div className="card">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900 flex items-center font-display">
-                <UserGroupIcon className="h-5 w-5 text-primary mr-2" />
+          {/* Authors Section - Compact Table */}
+          <div className="bg-white border border-gray-200 rounded-md">
+            <div className="px-4 py-2 border-b border-gray-100">
+              <h2 className="text-xs font-semibold text-gray-900 flex items-center">
+                <UserGroupIcon className="h-3 w-3 text-gray-600 mr-1.5" />
                 Authors ({paperAuthors.length})
               </h2>
             </div>
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-100">
               {allAuthorships.map(authorship => {
                 const isExpanded = expandedAuthors[authorship.researcher.id];
 
                 return (
-                  <div key={authorship.id} className="px-6 py-4">
-                    <div className="flex items-start justify-between">
+                  <div key={authorship.id} className="px-4 py-2 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center justify-between">
                       <Link
                         to={`/researchers/${authorship.researcher.id}`}
-                        className="flex items-start flex-1 group"
+                        className="flex items-center flex-1 group"
                       >
-                        {authorship.researcher.avatar_url && (
+                        {authorship.researcher.avatar_url ? (
                           <img
                             src={authorship.researcher.avatar_url}
                             alt={authorship.researcher.name}
-                            className="h-10 w-10 rounded-full mr-3 object-cover"
+                            className="h-6 w-6 rounded-full mr-2 object-cover"
                           />
-                        )}
-                        {!authorship.researcher.avatar_url && (
-                          <UserCircleIcon className="h-10 w-10 text-gray-400 mr-3" />
+                        ) : (
+                          <UserCircleIcon className="h-6 w-6 text-gray-400 mr-2" />
                         )}
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-primary transition-colors font-content">
-                            {authorship.researcher.name}
-                          </h3>
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-xs font-medium text-gray-900 group-hover:text-gray-600">
+                              {authorship.researcher.name}
+                            </span>
+                            {authorship.author_position && (
+                              <span className="text-xs text-gray-500">
+                                {authorship.author_position}
+                              </span>
+                            )}
+                          </div>
                           {authorship.researcher.affiliation && (
-                            <p className="text-sm text-gray-600 font-ui">
+                            <p className="text-xs text-gray-600 mt-0.5">
                               {authorship.researcher.affiliation}
                             </p>
-                          )}
-                          {(authorship.author_position || authorship.contribution_role) && (
-                            <div className="flex flex-wrap gap-1.5 mt-2 font-ui">
-                              {authorship.author_position && (
-                                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
-                                  {authorship.author_position}
-                                </span>
-                              )}
-                              {authorship.contribution_role && (
-                                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
-                                  {authorship.contribution_role}
-                                </span>
-                              )}
-                            </div>
                           )}
                         </div>
                       </Link>
@@ -247,36 +245,36 @@ export default function PaperDetail() {
                       {authorship.summary && (
                         <button
                           onClick={() => toggleAuthor(authorship.researcher.id)}
-                          className="ml-4 p-1 text-gray-400 hover:text-gray-600 transition-colors"
+                          className="ml-2 p-1 text-gray-400 hover:text-gray-600"
                         >
                           {isExpanded ? (
-                            <ChevronUpIcon className="h-5 w-5" />
+                            <ChevronUpIcon className="h-3 w-3" />
                           ) : (
-                            <ChevronDownIcon className="h-5 w-5" />
+                            <ChevronDownIcon className="h-3 w-3" />
                           )}
                         </button>
                       )}
                     </div>
 
-                    {/* Expanded authorship details */}
+                    {/* Expanded Details */}
                     {isExpanded && authorship.summary && (
-                      <div className="mt-4 pl-13 prose prose-sm max-w-none text-gray-600">
+                      <div className="mt-2 ml-8 prose prose-sm max-w-none text-xs text-gray-600">
                         <ReactMarkdown>{authorship.summary}</ReactMarkdown>
                       </div>
                     )}
 
                     {/* Versions */}
                     {isExpanded && authorship.versions && authorship.versions.length > 0 && (
-                      <div className="mt-4 pl-13">
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Versions</h4>
-                        <div className="space-y-2">
+                      <div className="mt-2 ml-8">
+                        <h4 className="text-xs font-semibold text-gray-900 mb-1">Versions</h4>
+                        <div className="space-y-1">
                           {authorship.versions.map(version => (
-                            <div key={version.id} className="text-sm">
+                            <div key={version.id} className="text-xs">
                               <a
                                 href={version.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-primary hover:text-accent font-medium"
+                                className="text-gray-900 hover:text-gray-600 font-medium"
                               >
                                 {version.version_number} ({version.status})
                               </a>
@@ -286,7 +284,7 @@ export default function PaperDetail() {
                                 </span>
                               )}
                               {version.summary && (
-                                <p className="text-gray-600 mt-1">{version.summary}</p>
+                                <p className="text-gray-600 mt-0.5">{version.summary}</p>
                               )}
                             </div>
                           ))}
@@ -296,11 +294,11 @@ export default function PaperDetail() {
 
                     {/* Reviews */}
                     {isExpanded && authorship.reviews && authorship.reviews.length > 0 && (
-                      <div className="mt-4 pl-13">
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Reviews</h4>
-                        <div className="space-y-2">
+                      <div className="mt-2 ml-8">
+                        <h4 className="text-xs font-semibold text-gray-900 mb-1">Reviews</h4>
+                        <div className="space-y-1">
                           {authorship.reviews.map(review => (
-                            <div key={review.id} className="text-sm">
+                            <div key={review.id} className="text-xs">
                               <div className="flex items-center gap-2">
                                 <span className="font-medium text-gray-900">
                                   {review.review_type.replace('_', ' ')}
@@ -317,7 +315,7 @@ export default function PaperDetail() {
                                 )}
                               </div>
                               {review.summary && (
-                                <p className="text-gray-600 mt-1">{review.summary}</p>
+                                <p className="text-gray-600 mt-0.5">{review.summary}</p>
                               )}
                             </div>
                           ))}
@@ -329,7 +327,7 @@ export default function PaperDetail() {
               })}
 
               {paperAuthors.length === 0 && (
-                <div className="px-6 py-8 text-center text-gray-500">
+                <div className="px-4 py-6 text-center text-xs text-gray-500">
                   No authors found for this paper.
                 </div>
               )}
@@ -337,43 +335,43 @@ export default function PaperDetail() {
           </div>
         </div>
 
-        {/* Right Column - Metadata */}
-        <div className="lg:col-span-4">
-          {/* Paper Information */}
-          <div className="card mb-6">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-semibold text-gray-900 font-display">Paper Information</h3>
+        {/* Sidebar - 1/3 */}
+        <div className="space-y-4">
+          {/* Paper Metadata */}
+          <div className="bg-white border border-gray-200 rounded-md">
+            <div className="px-4 py-2 border-b border-gray-100">
+              <h3 className="text-xs font-semibold text-gray-900">Metadata</h3>
             </div>
-            <div className="px-5 py-4 font-ui">
-              <dl className="space-y-3">
+            <div className="px-4 py-3">
+              <dl className="space-y-2">
                 <div>
-                  <dt className="text-sm font-medium text-gray-500">Publication Date</dt>
-                  <dd className="text-sm text-gray-900 mt-1">
+                  <dt className="text-xs font-medium text-gray-500">Published</dt>
+                  <dd className="text-xs text-gray-900 mt-0.5">
                     {formatDate(paper.publication_date)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-gray-500">Journal/Conference</dt>
-                  <dd className="text-sm text-gray-900 mt-1">
+                  <dt className="text-xs font-medium text-gray-500">Journal</dt>
+                  <dd className="text-xs text-gray-900 mt-0.5">
                     {paper.journal || 'N/A'}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-gray-500">Citations</dt>
-                  <dd className="text-sm text-gray-900 mt-1">
+                  <dt className="text-xs font-medium text-gray-500">Citations</dt>
+                  <dd className="text-xs text-gray-900 mt-0.5">
                     {paper.citation_count || 0}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-medium text-gray-500">Authors</dt>
-                  <dd className="text-sm text-gray-900 mt-1">
+                  <dt className="text-xs font-medium text-gray-500">Authors</dt>
+                  <dd className="text-xs text-gray-900 mt-0.5">
                     {paperAuthors.length}
                   </dd>
                 </div>
                 {paper.doi && (
                   <div>
-                    <dt className="text-sm font-medium text-gray-500">DOI</dt>
-                    <dd className="text-sm text-gray-900 mt-1 break-all">
+                    <dt className="text-xs font-medium text-gray-500">DOI</dt>
+                    <dd className="text-xs text-gray-900 mt-0.5 break-all font-mono">
                       {paper.doi}
                     </dd>
                   </div>
@@ -384,14 +382,14 @@ export default function PaperDetail() {
 
           {/* Keywords */}
           {paper.keywords && paper.keywords.length > 0 && (
-            <div className="card">
-              <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-                <h3 className="text-sm font-semibold text-gray-900 font-display">Keywords</h3>
+            <div className="bg-white border border-gray-200 rounded-md">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <h3 className="text-xs font-semibold text-gray-900">Keywords</h3>
               </div>
-              <div className="px-5 py-4">
-                <div className="flex flex-wrap gap-2">
+              <div className="px-4 py-3">
+                <div className="flex flex-wrap gap-1.5">
                   {paper.keywords.map((keyword, idx) => (
-                    <span key={idx} className="badge badge-primary">
+                    <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
                       {keyword}
                     </span>
                   ))}

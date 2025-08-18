@@ -35,10 +35,10 @@ export default function Researchers() {
 
   if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-gray-900 font-display mb-6">Researchers</h2>
-        <div className="card">
-          <div className="text-center py-10 text-gray-600">Loading Researchers...</div>
+      <div className="max-w-6xl">
+        <h2 className="text-sm font-semibold text-gray-900 mb-4">Researchers</h2>
+        <div className="bg-white border border-gray-200 rounded-md">
+          <div className="p-6 text-center text-xs text-gray-600">Loading Researchers...</div>
         </div>
       </div>
     );
@@ -46,34 +46,34 @@ export default function Researchers() {
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-gray-900 font-display mb-6">Researchers</h2>
-        <div className="rounded-lg bg-red-50 border border-red-200 p-6 text-center">
-          <div className="h-12 w-12 text-red-600 mx-auto mb-4">⚠️</div>
-          <h3 className="text-lg font-medium text-gray-900">Error loading researchers</h3>
-          <p className="mt-2 text-gray-600">{error}</p>
+      <div className="max-w-6xl">
+        <h2 className="text-sm font-semibold text-gray-900 mb-4">Researchers</h2>
+        <div className="rounded border border-red-200 bg-red-50 p-4 text-center">
+          <div className="text-2xl mb-2">⚠️</div>
+          <h3 className="text-sm font-medium text-gray-900">Error loading researchers</h3>
+          <p className="mt-1 text-xs text-gray-600">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 font-display mb-4">Researchers</h2>
+    <div className="max-w-6xl">
+      {/* Compact Header */}
+      <div className="mb-4">
+        <h2 className="text-sm font-semibold text-gray-900 mb-3">Researchers ({filteredResearchers.length})</h2>
 
         {/* Search and Filter Controls */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-2">
           {/* Search Input */}
           <div className="relative flex-1">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+            <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
+              <MagnifyingGlassIcon className="h-3 w-3 text-gray-400" />
             </div>
             <input
               type="text"
-              className="input pl-10 text-sm"
-              placeholder="Search researchers by name or affiliation..."
+              className="w-full pl-7 pr-3 py-1.5 text-xs border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-900"
+              placeholder="Search by name or affiliation..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -81,11 +81,11 @@ export default function Researchers() {
 
           {/* Research Interest Filter */}
           <select
-            className="input text-sm sm:w-64"
+            className="px-3 py-1.5 text-xs border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-900 sm:w-48"
             value={selectedInterest}
             onChange={(e) => setSelectedInterest(e.target.value)}
           >
-            <option value="">All Research Interests</option>
+            <option value="">All Interests</option>
             {allInterests.map(interest => (
               <option key={interest} value={interest}>
                 {interest}
@@ -96,84 +96,90 @@ export default function Researchers() {
       </div>
 
       {filteredResearchers.length === 0 ? (
-        <div className="card p-8 text-center">
-          <UserCircleIcon className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+        <div className="bg-white border border-gray-200 rounded-md p-6 text-center">
+          <UserCircleIcon className="h-8 w-8 text-gray-400 mx-auto mb-2" />
           {searchQuery || selectedInterest ? (
             <>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">No researchers found</h3>
-              <p className="text-gray-600">No researchers match your search criteria</p>
+              <h3 className="text-sm font-medium text-gray-900 mb-1">No researchers found</h3>
+              <p className="text-xs text-gray-600">No researchers match your criteria</p>
             </>
           ) : (
             <>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">No researchers yet</h3>
-              <p className="text-gray-600">When researchers are added, they'll appear here</p>
+              <h3 className="text-sm font-medium text-gray-900 mb-1">No researchers yet</h3>
+              <p className="text-xs text-gray-600">Researchers will appear here</p>
             </>
           )}
         </div>
       ) : (
-        <ul role="list" className="divide-y divide-gray-200 card">
+        <div className="bg-white border border-gray-200 rounded-md divide-y divide-gray-100">
           {filteredResearchers.map((researcher) => {
             const publicationCount = researcher.authorships?.length || 0;
 
             return (
-              <li key={researcher.id} className="relative flex justify-between gap-x-6 px-6 py-5 hover:bg-gray-50 transition-colors group">
-                <div className="flex min-w-0 gap-x-4">
+              <Link
+                key={researcher.id}
+                to={`/researchers/${researcher.id}`}
+                className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 transition-colors group"
+              >
+                <div className="flex items-center gap-3 flex-1 min-w-0">
                   {researcher.avatar_url ? (
                     <img
                       alt={`${researcher.name} avatar`}
                       src={researcher.avatar_url}
-                      className="h-12 w-12 flex-none rounded-full object-cover"
+                      className="h-8 w-8 rounded-full object-cover flex-shrink-0"
                     />
                   ) : (
-                    <UserCircleIcon className="h-12 w-12 flex-none text-gray-400" />
+                    <UserCircleIcon className="h-8 w-8 text-gray-400 flex-shrink-0" />
                   )}
-                  <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900 font-content">
-                      <Link to={`/researchers/${researcher.id}`}>
-                        <span className="absolute inset-x-0 -top-px bottom-0" />
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline gap-2">
+                      <p className="text-xs font-medium text-gray-900 group-hover:text-gray-600 truncate">
                         {researcher.name}
-                      </Link>
-                    </p>
+                      </p>
+                      {researcher.h_index > 0 && (
+                        <span className="text-xs text-gray-500 flex-shrink-0">
+                          h-index: {researcher.h_index}
+                        </span>
+                      )}
+                    </div>
+
                     {researcher.affiliation && (
-                      <p className="mt-1 text-sm text-gray-600 font-ui">
+                      <p className="text-xs text-gray-600 truncate mt-0.5">
                         {researcher.affiliation}
                       </p>
                     )}
+
                     {researcher.research_interests && researcher.research_interests.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-1.5 font-ui">
+                      <div className="flex flex-wrap gap-1 mt-1.5">
                         {researcher.research_interests.slice(0, 3).map((interest, idx) => (
-                          <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
+                          <span key={idx} className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-gray-100 text-gray-700">
                             {interest}
                           </span>
                         ))}
                         {researcher.research_interests.length > 3 && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
-                            +{researcher.research_interests.length - 3} more
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-gray-100 text-gray-600">
+                            +{researcher.research_interests.length - 3}
                           </span>
                         )}
                       </div>
                     )}
                   </div>
                 </div>
-                <div className="flex shrink-0 items-center gap-x-4">
-                  <div className="hidden sm:flex sm:flex-col sm:items-end">
-                    <div className="flex gap-5 mt-2 font-ui">
-                      <div className="text-center">
-                        <div className="text-sm font-semibold text-primary">{researcher.h_index || 0}</div>
-                        <div className="text-xs text-gray-600">h-index</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-sm font-semibold text-gray-700">{publicationCount}</div>
-                        <div className="text-xs text-gray-600">Publications</div>
-                      </div>
+
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <div className="hidden sm:flex items-center gap-3">
+                    <div className="text-right">
+                      <div className="text-xs font-medium text-gray-900">{publicationCount}</div>
+                      <div className="text-xs text-gray-600">pubs</div>
                     </div>
                   </div>
-                  <ChevronRightIcon className="h-5 w-5 flex-none text-gray-400 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <ChevronRightIcon className="h-4 w-4 text-gray-400 opacity-50 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </li>
+              </Link>
             );
           })}
-        </ul>
+        </div>
       )}
     </div>
   );

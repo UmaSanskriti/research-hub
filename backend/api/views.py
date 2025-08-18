@@ -1,5 +1,5 @@
 import os
-import time # Optional: for slight delay if needed during testing
+import time
 import threading
 from datetime import datetime
 from django.http import StreamingHttpResponse, JsonResponse, HttpResponseBadRequest
@@ -7,16 +7,21 @@ from django.utils import timezone
 from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
 from rest_framework import viewsets, status
-from anthropic import Anthropic, APIError
+from openai import AzureOpenAI
 from django.conf import settings
 from .models import *
 from .serializers import DataSerializer, PaperSerializer, ResearcherSerializer, ImportJobSerializer
 
+# Initialize Azure OpenAI client
 try:
-    client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+    client = AzureOpenAI(
+        api_key=settings.AZURE_OPENAI_API_KEY,
+        api_version=settings.AZURE_OPENAI_API_VERSION,
+        azure_endpoint=settings.AZURE_OPENAI_ENDPOINT
+    )
 except Exception as e:
-    print(f"Error initializing Anthropic client: {e}")
-    client = None # Set client to None if initialization fails
+    print(f"Error initializing Azure OpenAI client: {e}")
+    client = None
 
 
 # --- Simple Test View ---
@@ -32,34 +37,39 @@ def get_data(request):
 
 # --- LLM Streaming View ---
 
-def generate_claude_stream(system_prompt, user_prompt):
+def generate_azure_openai_stream(system_prompt, user_prompt):
     """
-    Generator function to stream responses from Claude API.
+    Generator function to stream responses from Azure OpenAI API.
     Yields chunks of text content.
     """
     if not client:
-        yield "Error: Claude client not initialized. Check API key."
+        yield "Error: Azure OpenAI client not initialized. Check configuration."
         return
     if not system_prompt or not user_prompt:
         yield "Error: No prompt provided."
         return
 
     try:
-        with client.messages.stream(
-            model="claude-sonnet-4-20250514",
+        response = client.chat.completions.create(
+            model=settings.AZURE_OPENAI_DEPLOYMENT,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
             max_tokens=4096,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}],
-        ) as stream:
-            for text in stream.text_stream:
-                yield text
+            temperature=0.7,
+            stream=True
+        )
 
-    except APIError as e:
-        print(f"Claude API Error: {e}")
-        yield f"\n\nError communicating with Claude: {str(e)}"
+        for chunk in response:
+            if chunk.choices and len(chunk.choices) > 0:
+                delta = chunk.choices[0].delta
+                if hasattr(delta, 'content') and delta.content:
+                    yield delta.content
+
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        yield f"\n\nAn unexpected error occurred: {str(e)}"
+        print(f"Azure OpenAI API Error: {e}")
+        yield f"\n\nError communicating with Azure OpenAI: {str(e)}"
 
 def get_system_prompt():
     return """
@@ -195,7 +205,7 @@ def llm_stream_view(request):
 
     try:
         # Create the generator
-        stream_generator = generate_claude_stream(system_prompt, user_prompt)
+        stream_generator = generate_azure_openai_stream(system_prompt, user_prompt)
 
 
         response = StreamingHttpResponse(
