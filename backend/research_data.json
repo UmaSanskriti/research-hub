@@ -1,0 +1,372 @@
+{
+  "papers": [
+    {
+      "id": 1,
+      "title": "Attention Is All You Need: A Comprehensive Analysis",
+      "doi": "10.48550/arXiv.1706.03762",
+      "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+      "publication_date": "2017-06-12",
+      "journal": "NeurIPS 2017",
+      "citation_count": 95420,
+      "keywords": [
+        "transformers",
+        "attention mechanism",
+        "neural networks",
+        "NLP",
+        "deep learning"
+      ],
+      "url": "https://arxiv.org/abs/1706.03762",
+      "avatar_url": "https://ui-avatars.com/api/?name=NeurIPS&background=635BFF&color=fff&bold=true",
+      "summary": "This groundbreaking paper introduces the Transformer architecture, which has become the foundation for modern large language models. The attention mechanism eliminates the need for recurrence, enabling parallel processing and better handling of long-range dependencies."
+    },
+    {
+      "id": 2,
+      "title": "Deep Residual Learning for Image Recognition",
+      "doi": "10.1109/CVPR.2016.90",
+      "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions.",
+      "publication_date": "2015-12-10",
+      "journal": "CVPR 2016",
+      "citation_count": 142350,
+      "keywords": [
+        "deep learning",
+        "residual networks",
+        "computer vision",
+        "image recognition"
+      ],
+      "url": "https://arxiv.org/abs/1512.03385",
+      "avatar_url": "https://ui-avatars.com/api/?name=CVPR&background=7C66FF&color=fff&bold=true",
+      "summary": "ResNet introduces skip connections that allow training of very deep neural networks by addressing the vanishing gradient problem. This architecture has become a cornerstone of computer vision and achieved breakthrough performance on ImageNet and other benchmarks."
+    },
+    {
+      "id": 3,
+      "title": "Mastering the Game of Go with Deep Neural Networks and Tree Search",
+      "doi": "10.1038/nature16961",
+      "abstract": "The game of Go has long been viewed as the most challenging of classic games for artificial intelligence owing to its enormous search space and the difficulty of evaluating board positions and moves. Here we introduce a new approach to computer Go that uses value networks to evaluate board positions and policy networks to select moves.",
+      "publication_date": "2016-01-27",
+      "journal": "Nature",
+      "citation_count": 18740,
+      "keywords": [
+        "reinforcement learning",
+        "game AI",
+        "neural networks",
+        "Monte Carlo tree search"
+      ],
+      "url": "https://www.nature.com/articles/nature16961",
+      "avatar_url": "https://ui-avatars.com/api/?name=Nature&background=00D924&color=fff&bold=true",
+      "summary": "AlphaGo combines deep neural networks with Monte Carlo tree search to achieve superhuman performance in Go. This work demonstrates the power of combining deep learning with traditional AI techniques and represents a milestone in reinforcement learning."
+    },
+    {
+      "id": 4,
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "doi": "10.18653/v1/N19-1423",
+      "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.",
+      "publication_date": "2018-10-11",
+      "journal": "NAACL 2019",
+      "citation_count": 67890,
+      "keywords": [
+        "BERT",
+        "transformers",
+        "pre-training",
+        "NLP",
+        "language models"
+      ],
+      "url": "https://arxiv.org/abs/1810.04805",
+      "avatar_url": "https://ui-avatars.com/api/?name=NAACL&background=635BFF&color=fff&bold=true",
+      "summary": "BERT revolutionizes NLP by introducing bidirectional pre-training of transformers. This approach has set new standards for a wide range of natural language processing tasks and inspired numerous follow-up models."
+    },
+    {
+      "id": 5,
+      "title": "Quantum Supremacy using a Programmable Superconducting Processor",
+      "doi": "10.1038/s41586-019-1666-5",
+      "abstract": "The promise of quantum computers is that certain computational tasks might be executed exponentially faster on a quantum processor than on a classical processor. A fundamental challenge is to build a high-fidelity processor capable of running quantum algorithms in an exponentially large computational space.",
+      "publication_date": "2019-10-23",
+      "journal": "Nature",
+      "citation_count": 5240,
+      "keywords": [
+        "quantum computing",
+        "quantum supremacy",
+        "superconducting qubits",
+        "quantum algorithms"
+      ],
+      "url": "https://www.nature.com/articles/s41586-019-1666-5",
+      "avatar_url": "https://ui-avatars.com/api/?name=Nature&background=FF6B6B&color=fff&bold=true",
+      "summary": "Google's quantum supremacy paper demonstrates that a quantum processor can perform a specific task exponentially faster than classical computers. This milestone validates decades of quantum computing research and opens new frontiers in computation."
+    },
+    {
+      "id": 6,
+      "title": "Serverless Computing: One Step Forward, Two Steps Back",
+      "doi": "10.1145/3299869.3314024",
+      "abstract": "Serverless computing offers the potential to program the cloud at an unprecedented level of simplicity. However, the current serverless computing paradigm has several limitations. We explore these limitations and propose directions for improving serverless systems.",
+      "publication_date": "2019-02-14",
+      "journal": "CIDR 2019",
+      "citation_count": 1850,
+      "keywords": [
+        "serverless computing",
+        "cloud computing",
+        "distributed systems",
+        "system design"
+      ],
+      "url": "http://cidrdb.org/cidr2019/papers/p119-hellerstein-cidr19.pdf",
+      "avatar_url": "https://ui-avatars.com/api/?name=CIDR&background=4ECDC4&color=fff&bold=true",
+      "summary": "This paper provides a critical analysis of serverless computing, highlighting both its promise and current limitations. It offers valuable insights for designing the next generation of cloud computing platforms with improved state management and communication patterns."
+    },
+    {
+      "id": 7,
+      "title": "Few-Shot Learning with Graph Neural Networks",
+      "doi": "10.48550/arXiv.1711.04043",
+      "abstract": "We propose to tackle the challenging few-shot learning problem using graph neural networks. Our model learns to propagate label information between examples in a mini-batch, enabling the model to learn from very few examples of each class.",
+      "publication_date": "2017-11-11",
+      "journal": "ICLR 2018",
+      "citation_count": 3420,
+      "keywords": [
+        "few-shot learning",
+        "graph neural networks",
+        "meta-learning",
+        "computer vision"
+      ],
+      "url": "https://arxiv.org/abs/1711.04043",
+      "avatar_url": "https://ui-avatars.com/api/?name=ICLR&background=7C66FF&color=fff&bold=true",
+      "summary": "This work applies graph neural networks to few-shot learning, enabling models to learn from minimal examples. The approach has influenced subsequent research in meta-learning and has practical applications in scenarios with limited labeled data."
+    }
+  ],
+  "researchers": [
+    {
+      "id": 1,
+      "name": "Dr. Sarah Chen",
+      "email": "s.chen@stanford.edu",
+      "affiliation": "Stanford University",
+      "orcid_id": "0000-0001-2345-6789",
+      "h_index": 42,
+      "research_interests": [
+        "Machine Learning",
+        "Computer Vision",
+        "Neural Networks"
+      ],
+      "url": "https://scholar.google.com/citations?user=example1",
+      "avatar_url": "https://ui-avatars.com/api/?name=Sarah+Chen&background=635BFF&color=fff",
+      "summary": "Dr. Sarah Chen is a leading researcher in computer vision and deep learning. Her work focuses on developing efficient neural network architectures for real-time image processing and has been cited over 15,000 times. She pioneered several breakthrough methods in attention mechanisms and transformer architectures."
+    },
+    {
+      "id": 2,
+      "name": "Prof. Michael Rodriguez",
+      "email": "m.rodriguez@mit.edu",
+      "affiliation": "MIT",
+      "orcid_id": "0000-0002-3456-7890",
+      "h_index": 56,
+      "research_interests": [
+        "Natural Language Processing",
+        "Large Language Models",
+        "AI Ethics"
+      ],
+      "url": "https://scholar.google.com/citations?user=example2",
+      "avatar_url": "https://ui-avatars.com/api/?name=Michael+Rodriguez&background=7C66FF&color=fff",
+      "summary": "Prof. Michael Rodriguez is a distinguished researcher in natural language processing with over 20 years of experience. His recent work on large language models and AI safety has shaped industry standards. He has published over 100 papers and advised numerous PhD students who have gone on to leadership positions in academia and industry."
+    },
+    {
+      "id": 3,
+      "name": "Dr. Aisha Patel",
+      "email": "a.patel@berkeley.edu",
+      "affiliation": "UC Berkeley",
+      "orcid_id": "0000-0003-4567-8901",
+      "h_index": 38,
+      "research_interests": [
+        "Reinforcement Learning",
+        "Robotics",
+        "Multi-Agent Systems"
+      ],
+      "url": "https://scholar.google.com/citations?user=example3",
+      "avatar_url": "https://ui-avatars.com/api/?name=Aisha+Patel&background=00D924&color=fff",
+      "summary": "Dr. Aisha Patel specializes in reinforcement learning and its applications to robotics. Her work on multi-agent systems has enabled breakthroughs in autonomous vehicle coordination and robotic collaboration. She is particularly known for developing efficient exploration strategies in high-dimensional state spaces."
+    },
+    {
+      "id": 4,
+      "name": "Dr. James Wilson",
+      "email": "j.wilson@oxford.ac.uk",
+      "affiliation": "University of Oxford",
+      "orcid_id": "0000-0004-5678-9012",
+      "h_index": 31,
+      "research_interests": [
+        "Quantum Computing",
+        "Cryptography",
+        "Theoretical Computer Science"
+      ],
+      "url": "https://scholar.google.com/citations?user=example4",
+      "avatar_url": "https://ui-avatars.com/api/?name=James+Wilson&background=FF6B6B&color=fff",
+      "summary": "Dr. James Wilson is a theoretical computer scientist focusing on quantum computing and post-quantum cryptography. His work bridges the gap between theoretical foundations and practical implementations of quantum algorithms. He has made significant contributions to quantum error correction and quantum communication protocols."
+    },
+    {
+      "id": 5,
+      "name": "Prof. Lisa Zhang",
+      "email": "l.zhang@cmu.edu",
+      "affiliation": "Carnegie Mellon University",
+      "orcid_id": "0000-0005-6789-0123",
+      "h_index": 48,
+      "research_interests": [
+        "Computer Systems",
+        "Distributed Systems",
+        "Cloud Computing"
+      ],
+      "url": "https://scholar.google.com/citations?user=example5",
+      "avatar_url": "https://ui-avatars.com/api/?name=Lisa+Zhang&background=4ECDC4&color=fff",
+      "summary": "Prof. Lisa Zhang is an expert in distributed systems and cloud computing infrastructure. Her research on scalable system design has been adopted by major tech companies. She has published extensively on topics ranging from data center optimization to serverless computing architectures, with a focus on energy efficiency and reliability."
+    }
+  ],
+  "authorships": [
+    {
+      "id": 1,
+      "paper": 1,
+      "researcher": 1,
+      "author_position": "First Author",
+      "contribution_role": "Model architecture design and experimental validation",
+      "summary": "Led the design of the transformer architecture, particularly the multi-head attention mechanism. Conducted extensive experiments demonstrating the model's effectiveness across multiple NLP tasks."
+    },
+    {
+      "id": 2,
+      "paper": 1,
+      "researcher": 2,
+      "author_position": "Corresponding Author",
+      "contribution_role": "Theoretical foundation and paper writing",
+      "summary": "Provided theoretical insights into the attention mechanism and its relationship to previous sequence modeling approaches. Supervised the project and coordinated research efforts."
+    },
+    {
+      "id": 3,
+      "paper": 2,
+      "researcher": 1,
+      "author_position": "Co-author",
+      "contribution_role": "Computer vision applications",
+      "summary": "Applied residual networks to various computer vision tasks and analyzed their effectiveness. Contributed to understanding why skip connections enable training of deeper networks."
+    },
+    {
+      "id": 4,
+      "paper": 3,
+      "researcher": 3,
+      "author_position": "First Author",
+      "contribution_role": "Reinforcement learning algorithms",
+      "summary": "Designed and implemented the reinforcement learning framework combining policy and value networks. Developed the training pipeline that enabled the system to achieve superhuman performance."
+    },
+    {
+      "id": 5,
+      "paper": 4,
+      "researcher": 2,
+      "author_position": "First Author",
+      "contribution_role": "Pre-training methodology and architecture",
+      "summary": "Conceived the bidirectional pre-training approach and designed the masked language modeling objective. Led the implementation and large-scale experiments."
+    },
+    {
+      "id": 6,
+      "paper": 4,
+      "researcher": 1,
+      "author_position": "Co-author",
+      "contribution_role": "Fine-tuning and evaluation",
+      "summary": "Developed fine-tuning strategies for downstream tasks and conducted comprehensive evaluation across multiple benchmarks. Contributed to analysis of what the model learns."
+    },
+    {
+      "id": 7,
+      "paper": 5,
+      "researcher": 4,
+      "author_position": "First Author",
+      "contribution_role": "Quantum algorithm design and error analysis",
+      "summary": "Designed the quantum circuit used in the supremacy demonstration and developed methods for verifying the results. Conducted theoretical analysis of the computational complexity."
+    },
+    {
+      "id": 8,
+      "paper": 6,
+      "researcher": 5,
+      "author_position": "First Author",
+      "contribution_role": "System design and performance analysis",
+      "summary": "Led the critical analysis of serverless computing limitations and proposed architectural improvements. Conducted extensive performance measurements and identified key bottlenecks."
+    },
+    {
+      "id": 9,
+      "paper": 7,
+      "researcher": 1,
+      "author_position": "First Author",
+      "contribution_role": "Graph neural network architecture",
+      "summary": "Designed the graph neural network architecture for few-shot learning and developed the label propagation mechanism. Conducted experiments across multiple few-shot learning benchmarks."
+    },
+    {
+      "id": 10,
+      "paper": 7,
+      "researcher": 3,
+      "author_position": "Co-author",
+      "contribution_role": "Meta-learning framework",
+      "summary": "Contributed the meta-learning framework and training procedure. Helped design experiments and provided insights into the connection with reinforcement learning."
+    }
+  ],
+  "versions": [
+    {
+      "id": 1,
+      "authorship": 1,
+      "version_number": "v1",
+      "submission_date": "2017-06-12",
+      "status": "published",
+      "url": "https://arxiv.org/abs/1706.03762v1",
+      "summary": "Initial submission to arXiv. Introduces the transformer architecture with experimental results on translation tasks."
+    },
+    {
+      "id": 2,
+      "authorship": 1,
+      "version_number": "v2",
+      "submission_date": "2017-08-02",
+      "status": "published",
+      "url": "https://arxiv.org/abs/1706.03762v2",
+      "summary": "Revision incorporating reviewer feedback. Added ablation studies and improved clarity of architectural descriptions."
+    },
+    {
+      "id": 3,
+      "authorship": 5,
+      "version_number": "v1",
+      "submission_date": "2018-10-11",
+      "status": "published",
+      "url": "https://arxiv.org/abs/1810.04805v1",
+      "summary": "Initial BERT paper submission. Demonstrates strong performance on GLUE benchmark tasks."
+    },
+    {
+      "id": 4,
+      "authorship": 5,
+      "version_number": "v2",
+      "submission_date": "2019-05-24",
+      "status": "published",
+      "url": "https://arxiv.org/abs/1810.04805v2",
+      "summary": "Updated version with additional analysis and improved presentation. Added discussion of model behavior and limitations."
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "authorship": 1,
+      "reviewer_name": "Anonymous Reviewer A",
+      "review_date": "2017-07-15",
+      "review_type": "peer_review",
+      "url": null,
+      "summary": "Groundbreaking work that challenges the necessity of recurrence in sequence modeling. The attention mechanism is elegant and effective. Recommend acceptance with minor revisions to clarify the positional encoding scheme."
+    },
+    {
+      "id": 2,
+      "authorship": 1,
+      "reviewer_name": "Anonymous Reviewer B",
+      "review_date": "2017-07-20",
+      "review_type": "peer_review",
+      "url": null,
+      "summary": "Strong empirical results across multiple tasks. Would like to see more analysis of computational requirements and comparison with recent RNN variants. Overall very positive assessment."
+    },
+    {
+      "id": 3,
+      "authorship": 5,
+      "reviewer_name": "Anonymous Reviewer C",
+      "review_date": "2018-12-10",
+      "review_type": "peer_review",
+      "url": null,
+      "summary": "Excellent contribution to pre-training methods for NLP. The bidirectional approach is novel and results are impressive. Some concerns about computational cost for pre-training, but this doesn't diminish the contribution."
+    },
+    {
+      "id": 4,
+      "authorship": 7,
+      "reviewer_name": "Program Committee",
+      "review_date": "2019-09-15",
+      "review_type": "acceptance",
+      "url": null,
+      "summary": "Important demonstration of quantum computational advantage. While there are debates about the specific claims, the experimental achievement is significant and the paper is well-written."
+    }
+  ]
+}

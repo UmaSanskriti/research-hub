@@ -60,6 +60,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # Default Vite port
     "http://127.0.0.1:5173",
+    "http://localhost:5174", # Updated Vite port
+    "http://127.0.0.1:5174",
 ]
 
 ROOT_URLCONF = 'config.urls'

@@ -1,51 +1,105 @@
 from rest_framework import serializers
-from .models import Repository, Issue, Commit, RepositoryWork, Contributor
+from .models import Paper, Review, Version, Authorship, Researcher, ImportJob, ExternalPublication
 
-class IssueSerializer(serializers.ModelSerializer):
+
+class ReviewSerializer(serializers.ModelSerializer):
+    """Serializer for peer review comments"""
     class Meta:
-        model = Issue
+        model = Review
         fields = '__all__'
 
-class CommitSerializer(serializers.ModelSerializer):
+
+class VersionSerializer(serializers.ModelSerializer):
+    """Serializer for paper versions/drafts"""
     class Meta:
-        model = Commit
+        model = Version
         fields = '__all__'
 
-class RepositorySerializer(serializers.ModelSerializer):
+
+class PaperSerializer(serializers.ModelSerializer):
+    """Serializer for research papers"""
     class Meta:
-        model = Repository
+        model = Paper
         fields = '__all__'
 
-class RepositoryWorkSerializer(serializers.ModelSerializer):
-    issues = IssueSerializer(many=True, read_only=True)
-    commits = CommitSerializer(many=True, read_only=True)
+    def validate_title(self, value):
+        """Validate title field"""
+        if not value or len(value.strip()) < 10:
+            raise serializers.ValidationError("Title must be at least 10 characters long")
+        if len(value) > 500:
+            raise serializers.ValidationError("Title must not exceed 500 characters")
+        return value.strip()
+
+    def validate_url(self, value):
+        """Validate URL field"""
+        if value and value.strip():
+            # URL validation is handled by URLField, but we can add custom messages
+            return value.strip()
+        return value
+
+    def validate(self, data):
+        """Cross-field validation"""
+        # If DOI is provided, validate format
+        if data.get('doi'):
+            import re
+            doi_pattern = r'^10\.\d{4,}\/\S+$'
+            if not re.match(doi_pattern, data['doi']):
+                raise serializers.ValidationError({
+                    'doi': 'Invalid DOI format. Expected format: 10.XXXX/...'
+                })
+        return data
+
+
+class ExternalPublicationSerializer(serializers.ModelSerializer):
+    """Serializer for external publications stored with researchers"""
+    class Meta:
+        model = ExternalPublication
+        fields = ['id', 'researcher', 'semantic_scholar_id', 'title', 'year',
+                  'venue', 'citation_count', 'doi', 'is_imported', 'last_fetched', 'created_at']
+        read_only_fields = ['id', 'last_fetched', 'created_at']
+
+
+class AuthorshipSerializer(serializers.ModelSerializer):
+    """Serializer for researcher-paper relationships"""
+    reviews = ReviewSerializer(many=True, read_only=True)
+    versions = VersionSerializer(many=True, read_only=True)
 
     class Meta:
-        model = RepositoryWork
+        model = Authorship
         fields = '__all__'
 
-class ContributorSerializer(serializers.ModelSerializer):
-    works = RepositoryWorkSerializer(many=True, read_only=True)
+
+class ResearcherSerializer(serializers.ModelSerializer):
+    """Serializer for researchers with their authorships"""
+    authorships = AuthorshipSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Contributor
+        model = Researcher
         fields = '__all__'
+
 
 class DataSerializer(serializers.Serializer):
-    repositories = RepositorySerializer(many=True, read_only=True)
-    contributors = ContributorSerializer(many=True, read_only=True)
+    """Main data serializer that returns all papers and researchers"""
+    papers = PaperSerializer(many=True, read_only=True)
+    researchers = ResearcherSerializer(many=True, read_only=True)
 
     def to_representation(self, instance):
-        # Assuming 'instance' is not a single object but a way to access all data.
-        # This serializer might need to be used differently, perhaps in a view
-        # where you explicitly pass the querysets.
+        """
+        Returns all papers and researchers with nested relationships.
+        This serializer fetches all data directly from the database.
+        """
         return {
-            'repositories': RepositorySerializer(Repository.objects.all(), many=True).data,
-            'contributors': ContributorSerializer(Contributor.objects.all(), many=True).data
+            'papers': PaperSerializer(Paper.objects.all(), many=True).data,
+            'researchers': ResearcherSerializer(Researcher.objects.all(), many=True).data
         }
 
-    # If this serializer is meant to serialize a specific object that holds
-    # references to all repositories and contributors, the implementation
-    # would need to change based on that object's structure.
-    # For now, it assumes it will be instantiated without an instance and
-    # will fetch all data directly.
+
+class ImportJobSerializer(serializers.ModelSerializer):
+    """Serializer for import job tracking"""
+    progress_percentage = serializers.ReadOnlyField()
+
+    class Meta:
+        model = ImportJob
+        fields = ['id', 'status', 'total', 'processed', 'successful', 'duplicates', 'failed',
+                  'errors', 'created_at', 'completed_at', 'progress_percentage']
+        read_only_fields = ['id', 'created_at', 'completed_at', 'progress_percentage']

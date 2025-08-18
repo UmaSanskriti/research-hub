@@ -1,39 +1,46 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import Repositories from './pages/Repositories';
-import RepositoryDetail from './pages/RepositoryDetail';
-import Contributors from './pages/Contributors';
-import ContributorDetail from './pages/ContributorDetail';
-import { ReactFlowProvider } from '@xyflow/react';
+import Papers from './pages/Papers';
+import PaperDetail from './pages/PaperDetail';
+import Researchers from './pages/Researchers';
+import ResearcherDetail from './pages/ResearcherDetail';
+import ImportHistory from './pages/ImportHistory';
 
 function App() {
   return (
-<ReactFlowProvider>
     <Routes>
       {/* Wrap all pages within the Layout component */}
       <Route path="/" element={<Layout />}>
-        {/* Index route for the dashboard */}
-        <Route index element={<Dashboard />} />
+        {/* Redirect root to /papers */}
+        <Route index element={<Navigate to="/papers" replace />} />
 
-        {/* Repository Routes */}
-        <Route path="repositories">
-           <Route index element={<Repositories />} /> {/* List page at /repositories */}
-           <Route path=":repoId" element={<RepositoryDetail />} /> {/* Detail page at /repositories/:repoId */}
+          {/* Paper Routes */}
+          <Route path="papers">
+            <Route index element={<Papers />} /> {/* List page at /papers */}
+            <Route path=":paperId" element={<PaperDetail />} /> {/* Detail page at /papers/:paperId */}
+          </Route>
+
+          {/* Researcher Routes */}
+          <Route path="researchers">
+            <Route index element={<Researchers />} /> {/* List page at /researchers */}
+            <Route path=":researcherId" element={<ResearcherDetail />} /> {/* Detail page at /researchers/:researcherId */}
+          </Route>
+
+          {/* Import History Route */}
+          <Route path="import-history" element={<ImportHistory />} />
+
+          {/* 404 Not Found Route */}
+          <Route path="*" element={
+            <div className="flex items-center justify-center min-h-screen">
+              <div className="text-center">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-2">404 Not Found</h2>
+                <p className="text-gray-600">The page you requested does not exist.</p>
+              </div>
+            </div>
+          } />
         </Route>
-
-        {/* Contributor Routes */}
-        <Route path="contributors">
-           <Route index element={<Contributors />} /> {/* List page at /contributors */}
-           <Route path=":contributorId" element={<ContributorDetail />} /> {/* Detail page at /contributors/:contributorId */}
-        </Route>
-
-         {/* Optional: Add a 404 Not Found Route */}
-         <Route path="*" element={<div><h2>404 Not Found</h2><p>The page you requested does not exist.</p></div>} />
-      </Route>
-    </Routes>
-    </ReactFlowProvider>
+      </Routes>
   );
 }
 

@@ -15,11 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from api.views import get_data, llm_stream_view
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from api.views import get_data, llm_stream_view, PaperViewSet, ResearcherViewSet, ImportJobViewSet
+
+# Create router for REST API endpoints
+router = DefaultRouter()
+router.register(r'papers', PaperViewSet, basename='paper')
+router.register(r'researchers', ResearcherViewSet, basename='researcher')
+router.register(r'import-jobs', ImportJobViewSet, basename='import-job')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
     path('api/get_data/', get_data, name='get_data'),
     path('api/llm_stream/', llm_stream_view, name='llm_stream')
 ]

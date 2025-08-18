@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Claude Stream</title></head>
+<body>
+<h1>Claude Stream Test</h1>
+<button onclick="testStream()">Test Stream</button>
+<pre id="output"></pre>
+<script>
+async function testStream() {
+  const output = document.getElementById('output');
+  output.textContent = 'Starting request...\n';
+  
+  try {
+    const response = await fetch('http://localhost:8000/api/llm_stream/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: "Who's the expert on the backend API?" }),
+    });
+    
+    output.textContent += 'Response received, status: ' + response.status + '\n';
+    output.textContent += 'Headers: ' + JSON.stringify([...response.headers.entries()]) + '\n\n';
+    
+    if (!response.ok) {
+      output.textContent += 'Error: ' + response.status;
+      return;
+    }
+    
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const text = decoder.decode(value, { stream: true });
+      output.textContent += text;
+    }
+    
+    output.textContent += '\n\n=== STREAM COMPLETE ===';
+  } catch (err) {
+    output.textContent += 'ERROR: ' + err.message + '\n' + err.stack;
+  }
+}
+</script>
+</body>
+</html>

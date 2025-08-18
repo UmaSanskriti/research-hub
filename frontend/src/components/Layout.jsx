@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import logo from '../../public/logo.png';
-import avatar from '../../public/llama.png';
 import {
     Dialog,
     DialogBackdrop,
@@ -12,30 +10,29 @@ import {
 } from '@headlessui/react';
 import {
     Bars3Icon,
-    CommandLineIcon,
-    ServerIcon,
+    DocumentTextIcon,
     UserGroupIcon,
     XMarkIcon,
-    SignalIcon,
-    CpuChipIcon,
+    AcademicCapIcon,
+    ClockIcon,
 } from '@heroicons/react/24/outline';
 import ClaudeChat from './ClaudeChat';
 
-// Navigation with clean labels
+// Navigation with research-focused labels
 const appNavigation = [
-    { name: 'Dashboard', to: '/', icon: CommandLineIcon },
-    { name: 'Repositories', to: '/repositories', icon: ServerIcon },
-    { name: 'Contributors', to: '/contributors', icon: UserGroupIcon },
+    { name: 'Papers', to: '/papers', icon: DocumentTextIcon },
+    { name: 'Researchers', to: '/researchers', icon: UserGroupIcon },
+    { name: 'Import History', to: '/import-history', icon: ClockIcon },
 ];
 
 // Organization data
 const organizations = [
-    { id: 1, name: 'Anthropic Claude', href: '#', initial: 'A', status: 'active' },
+    { id: 1, name: 'Research Hub', href: '#', initial: 'R', status: 'active' },
 ];
 
 const user = {
     name: 'User',
-    imageUrl: avatar
+    imageUrl: '/llama.png'
 };
 
 function classNames(...classes) {
@@ -47,31 +44,33 @@ export default function Layout() {
     const [currentTime, setCurrentTime] = useState(new Date());
     const location = useLocation();
 
-    // Update time every second for that authentic command center feel
+    // Update time every second
     useEffect(() => {
         const timer = setInterval(() => setCurrentTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
 
-    const formatStardate = (date) => {
-        const year = date.getFullYear();
-        const dayOfYear = Math.floor((date - new Date(year, 0, 0)) / 86400000);
-        return `${year}.${dayOfYear.toString().padStart(3, '0')}`;
+    const formatDate = (date) => {
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
     };
 
     const getCurrentPageName = () => {
         const page = appNavigation.find(item => item.to === location.pathname);
-        return page ? page.name : 'COMMAND CENTER';
+        return page ? page.name : 'Papers';
     };
 
     return (
         <>
-            <div className="h-full scanline-effect">
+            <div className="h-full">
                 {/* Mobile Sidebar Dialog */}
                 <Dialog open={sidebarOpen} onClose={setSidebarOpen} className="relative z-50 lg:hidden">
                     <DialogBackdrop
                         transition
-                        className="fixed inset-0 bg-black/90 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+                        className="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
                     />
                     <div className="fixed inset-0 flex">
                         <DialogPanel
@@ -83,23 +82,23 @@ export default function Layout() {
                                     <button
                                         type="button"
                                         onClick={() => setSidebarOpen(false)}
-                                        className="lcars-button bg-[#ff3366] hover:bg-[#ff9966] p-2 lcars-corner-tr lcars-corner-br"
+                                        className="rounded-md p-2.5 text-white hover:bg-gray-700/10"
                                     >
                                         <span className="sr-only">Close sidebar</span>
-                                        <XMarkIcon aria-hidden="true" className="size-6 text-black" />
+                                        <XMarkIcon aria-hidden="true" className="size-6" />
                                     </button>
                                 </div>
                             </TransitionChild>
                             {/* Mobile Sidebar */}
-                            <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0a0e27] px-4 pb-4 border-r-2 border-[#00d9ff]">
+                            <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                                 {/* Mobile Header */}
-                                <div className="flex h-16 items-center border-b border-[#00d9ff]/30">
+                                <div className="flex h-16 items-center border-b border-gray-200">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-[#00d9ff] rounded-lg flex items-center justify-center">
-                                            <CpuChipIcon className="w-6 h-6 text-black" />
+                                        <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
+                                            <AcademicCapIcon className="w-6 h-6 text-white" />
                                         </div>
                                         <div>
-                                            <div className="text-white text-base font-bold">Claude Hack Rhythm</div>
+                                            <div className="text-gray-900 text-base font-semibold font-ui tracking-tight">Research Hub</div>
                                         </div>
                                     </div>
                                 </div>
@@ -107,17 +106,17 @@ export default function Layout() {
                                 <nav className="flex flex-1 flex-col">
                                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                                         <li>
-                                            <ul role="list" className="space-y-2">
+                                            <ul role="list" className="space-y-1">
                                                 {appNavigation.map((item) => (
                                                     <li key={item.name}>
                                                         <NavLink
                                                             to={item.to}
                                                             className={({ isActive }) =>
                                                                 classNames(
-                                                                    'group flex items-center gap-x-3 px-3 py-2.5 text-sm font-semibold rounded-md transition-all',
+                                                                    'group flex items-center gap-x-3 px-3 py-2 text-sm font-medium rounded-lg transition-all font-ui',
                                                                     isActive
-                                                                        ? 'bg-[#00d9ff] text-black'
-                                                                        : 'text-[#e0e7ff] hover:bg-[#1a1f3a] hover:text-[#00d9ff]'
+                                                                        ? 'bg-gray-900 text-white'
+                                                                        : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                                                                 )
                                                             }
                                                             onClick={() => setSidebarOpen(false)}
@@ -132,7 +131,7 @@ export default function Layout() {
 
                                         {/* Organizations */}
                                         <li>
-                                            <div className="text-xs font-semibold text-[#ff9966] mb-2">
+                                            <div className="text-xs font-medium text-gray-500 mb-2 font-ui uppercase tracking-wider">
                                                 Organization
                                             </div>
                                             <ul role="list" className="space-y-1">
@@ -140,14 +139,14 @@ export default function Layout() {
                                                     <li key={org.name}>
                                                         <a
                                                             href={org.href}
-                                                            className="group flex items-center gap-x-3 px-3 py-2 text-sm rounded-md bg-[#1a1f3a] text-[#e0e7ff] hover:bg-[#2a2f4a] transition-all"
+                                                            className="group flex items-center gap-x-3 px-3 py-2 text-sm rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all font-ui"
                                                         >
-                                                            <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-[#00d9ff] text-black text-xs font-semibold">
+                                                            <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gray-900 text-white text-xs font-semibold">
                                                                 {org.initial}
                                                             </span>
                                                             <span className="truncate flex-1">{org.name}</span>
                                                             {org.status === 'active' && (
-                                                                <SignalIcon className="size-4 text-[#00ff41] status-active" />
+                                                                <div className="size-2 rounded-full bg-green-500" />
                                                             )}
                                                         </a>
                                                     </li>
@@ -157,18 +156,18 @@ export default function Layout() {
 
                                         {/* User Profile */}
                                         <li className="mt-auto">
-                                            <div className="bg-[#1a1f3a] rounded-lg border border-[#00d9ff]/30 p-3">
+                                            <div className="bg-gray-50 rounded-lg border border-gray-200 p-3">
                                                 <div className="flex items-center gap-x-3">
                                                     <img
                                                         alt="User Avatar"
                                                         src={user.imageUrl}
-                                                        className="size-10 rounded-full border-2 border-[#00d9ff]"
+                                                        className="size-10 rounded-full border-2 border-gray-900"
                                                     />
                                                     <div className="flex-1">
-                                                        <div className="text-sm text-white font-medium">{user.name}</div>
+                                                        <div className="text-sm text-gray-900 font-medium">{user.name}</div>
                                                         <div className="flex items-center gap-2 mt-0.5">
-                                                            <div className="w-1.5 h-1.5 bg-[#00ff41] rounded-full status-active"></div>
-                                                            <span className="text-[#00d9ff] text-xs">Online</span>
+                                                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                                            <span className="text-gray-600 text-xs">Online</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,18 +182,18 @@ export default function Layout() {
 
                 {/* Static sidebar for desktop */}
                 <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-[#0a0e27] px-6 pb-6 border-r-2 border-[#00d9ff]">
+                    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-6 border-r border-gray-200">
                         {/* Header Section */}
-                        <div className="flex flex-col pt-6 pb-4 border-b border-[#00d9ff]/30">
+                        <div className="flex flex-col pt-6 pb-4 border-b border-gray-200">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-[#00d9ff] rounded-lg flex items-center justify-center">
-                                    <CpuChipIcon className="w-6 h-6 text-black" />
+                                <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
+                                    <AcademicCapIcon className="w-6 h-6 text-white" />
                                 </div>
                                 <div className="flex-1">
-                                    <div className="text-white text-lg font-bold">Claude Hack Rhythm</div>
+                                    <div className="text-gray-900 text-lg font-bold">Research Hub</div>
                                     <div className="flex items-center gap-2 mt-0.5">
-                                        <div className="w-1.5 h-1.5 bg-[#00ff41] rounded-full status-active"></div>
-                                        <span className="text-[#00d9ff] text-xs">Online</span>
+                                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                        <span className="text-gray-600 text-xs">Online</span>
                                     </div>
                                 </div>
                             </div>
@@ -204,17 +203,17 @@ export default function Layout() {
                             <ul role="list" className="flex flex-1 flex-col gap-y-7">
                                 {/* Main Navigation */}
                                 <li>
-                                    <ul role="list" className="space-y-2">
+                                    <ul role="list" className="space-y-1">
                                         {appNavigation.map((item) => (
                                             <li key={item.name}>
                                                 <NavLink
                                                     to={item.to}
                                                     className={({ isActive }) =>
                                                         classNames(
-                                                            'group flex items-center gap-x-3 px-3 py-2.5 text-sm font-semibold rounded-md transition-all',
+                                                            'group flex items-center gap-x-3 px-3 py-2 text-sm font-medium rounded-lg transition-all font-ui',
                                                             isActive
-                                                                ? 'bg-[#00d9ff] text-black'
-                                                                : 'text-[#e0e7ff] hover:bg-[#1a1f3a] hover:text-[#00d9ff]'
+                                                                ? 'bg-gray-900 text-white'
+                                                                : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                                                         )
                                                     }
                                                 >
@@ -228,20 +227,20 @@ export default function Layout() {
 
                                 {/* Organizations Section */}
                                 <li>
-                                    <div className="text-xs font-semibold text-[#ff9966] mb-2">Organization</div>
+                                    <div className="text-xs font-medium text-gray-500 mb-2 font-ui uppercase tracking-wider">Organization</div>
                                     <ul role="list" className="space-y-1">
                                         {organizations.map((org) => (
                                             <li key={org.name}>
                                                 <a
                                                     href={org.href}
-                                                    className="group flex items-center gap-x-3 px-3 py-2 text-sm rounded-md bg-[#1a1f3a] text-[#e0e7ff] hover:bg-[#2a2f4a] transition-all"
+                                                    className="group flex items-center gap-x-3 px-3 py-2 text-sm rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all font-ui"
                                                 >
-                                                    <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-[#00d9ff] text-black text-xs font-semibold">
+                                                    <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-gray-900 text-white text-xs font-semibold">
                                                         {org.initial}
                                                     </span>
                                                     <span className="truncate flex-1">{org.name}</span>
                                                     {org.status === 'active' && (
-                                                        <SignalIcon className="size-4 text-[#00ff41] status-active" />
+                                                        <div className="size-2 rounded-full bg-green-500" />
                                                     )}
                                                 </a>
                                             </li>
@@ -251,19 +250,19 @@ export default function Layout() {
 
                                 {/* User Profile */}
                                 <li className="mt-auto">
-                                    <div className="bg-[#1a1f3a] rounded-lg border border-[#00d9ff]/30 p-3">
+                                    <div className="bg-gray-50 rounded-lg border border-gray-200 p-3">
                                         <div className="flex items-center gap-x-3">
                                             <div className="relative">
                                                 <img
                                                     alt="User Avatar"
                                                     src={user.imageUrl}
-                                                    className="size-10 rounded-full border-2 border-[#00d9ff]"
+                                                    className="size-10 rounded-full border-2 border-gray-900"
                                                 />
-                                                <div className="absolute -bottom-0.5 -right-0.5 size-3 bg-[#00ff41] rounded-full status-active border-2 border-[#0a0e27]"></div>
+                                                <div className="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 rounded-full border-2 border-white"></div>
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <div className="text-sm text-white font-medium truncate">{user.name}</div>
-                                                <div className="text-xs text-[#00d9ff]">
+                                                <div className="text-sm text-gray-900 font-medium truncate font-ui">{user.name}</div>
+                                                <div className="text-xs text-gray-600 font-ui">
                                                     {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                                                 </div>
                                             </div>
@@ -276,16 +275,16 @@ export default function Layout() {
                 </div>
 
                 {/* Top Bar (Mobile Only) */}
-                <div className="sticky top-0 z-40 flex items-center gap-x-4 bg-[#0a0e27] px-4 py-3 border-b-2 border-[#00d9ff] lg:hidden">
+                <div className="sticky top-0 z-40 flex items-center gap-x-4 bg-white px-4 py-3 border-b border-gray-200 lg:hidden">
                     <button
                         type="button"
                         onClick={() => setSidebarOpen(true)}
-                        className="p-2 rounded-md bg-[#00d9ff] hover:bg-[#ff9966] transition-all"
+                        className="p-2 rounded-md text-gray-700 hover:bg-gray-100"
                     >
                         <span className="sr-only">Open sidebar</span>
-                        <Bars3Icon aria-hidden="true" className="size-5 text-black" />
+                        <Bars3Icon aria-hidden="true" className="size-6" />
                     </button>
-                    <div className="flex-1 text-sm font-semibold text-white">
+                    <div className="flex-1 text-sm font-semibold text-gray-900 font-ui">
                         {getCurrentPageName()}
                     </div>
                     <a href="#">
@@ -293,18 +292,18 @@ export default function Layout() {
                         <img
                             alt="User Avatar"
                             src={user.imageUrl}
-                            className="size-8 rounded-full border-2 border-[#00d9ff]"
+                            className="size-8 rounded-full border-2 border-gray-900"
                         />
                     </a>
                 </div>
 
                 {/* Main Content Area */}
-                <main className="py-8 lg:pl-80 h-full min-h-screen bg-[#0a0e27] grid-background">
+                <main className="py-8 lg:pl-80 h-full min-h-screen bg-gray-50">
                     <div className="px-4 sm:px-6 lg:px-8 pb-24">
                         <Outlet />
                     </div>
 
-                    {/* Ship's Computer (ClaudeChat) */}
+                    {/* Claude Chat */}
                     <ClaudeChat />
                 </main>
             </div>
