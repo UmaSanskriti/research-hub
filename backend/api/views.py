@@ -1,7 +1,4 @@
-import os
-import time
 import threading
-from datetime import datetime
 from django.http import StreamingHttpResponse, JsonResponse, HttpResponseBadRequest
 from django.utils import timezone
 from rest_framework.decorators import api_view, action
@@ -9,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets, status
 from openai import AzureOpenAI
 from django.conf import settings
-from .models import *
+from .models import Paper, Researcher, ImportJob
 from .serializers import DataSerializer, PaperSerializer, ResearcherSerializer, ImportJobSerializer
 
 # Initialize Azure OpenAI client
