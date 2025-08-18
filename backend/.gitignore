@@ -14,7 +14,9 @@ __pycache__/
 
 # Django SQLite database file (common for local dev)
 # Be careful if you ever intend to commit a specific version
+*.sqlite3
 *.sqlite3-journal
+db.sqlite3
 
 # Environment variables
 # Ignore all .env files, committed .env.example is recommended
