@@ -1,7 +1,7 @@
 # Research Hub 🔬
 
 > Your intelligent research companion for discovering, organizing, and understanding academic literature
-
+Public Demo: https://research-hub.up.railway.app/papers
 ---
 
 ## What Is Research Hub?
