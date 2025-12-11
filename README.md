@@ -2,9 +2,10 @@
 
 > Your intelligent research companion for discovering, organizing, and understanding academic literature
 
-Product Demo video: https://www.loom.com/share/5dbaa4187ec647e8b49ab3f69cbfcb7a
+##Product Demo video: 
+https://www.loom.com/share/5dbaa4187ec647e8b49ab3f69cbfcb7a
 Web app link: https://research-hub.up.railway.app/
----
+
 
 ## What Is Research Hub?
 
