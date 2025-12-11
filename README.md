@@ -2,7 +2,7 @@
 
 > Your intelligent research companion for discovering, organizing, and understanding academic literature
 
-##Product Demo video: 
+## Product Demo video: 
 https://www.loom.com/share/5dbaa4187ec647e8b49ab3f69cbfcb7a
 Web app link: https://research-hub.up.railway.app/
 
@@ -11,7 +11,7 @@ Web app link: https://research-hub.up.railway.app/
 
 Research Hub is a smart research management system that helps you discover papers, explore researcher networks, and make sense of the ever-growing academic landscape. Think of it as your personal research librarian, powered by AI.
 
-### The Problem We Solve
+### The Problem that Research Hub Solves
 
 As a researcher, you know these challenges well:
 
@@ -126,7 +126,7 @@ Import papers from:
 ## How It Works (The Simple Version)
 
 1. **Add papers** - Import papers individually, in bulk, or by searching
-2. **Automatic enrichment** - We fetch complete metadata from academic databases
+2. **Automatic enrichment** - We fetch related papers from academic databases 
 3. **Explore connections** - Browse researcher networks and paper relationships
 4. **Get insights** - Use visualizations and AI chat to understand your research landscape
 5. **Stay organized** - Everything in one place, always up to date
